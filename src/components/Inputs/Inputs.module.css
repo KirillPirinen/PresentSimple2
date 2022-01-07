@@ -1,0 +1,10 @@
+.mainInput {
+  background: #FFFFFF;
+  border: 1px solid #F2EFE6;
+  box-sizing: border-box;
+  border-radius: 255px;
+  padding: 5px 10px;
+  margin: 10px;
+  text-align: center;
+  font-size: 25px;
+}

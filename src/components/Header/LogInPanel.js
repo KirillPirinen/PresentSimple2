@@ -7,9 +7,7 @@ export const LogInPanel = () => {
   const clickHandler = useNavigate().bind(null, 'auth/signup')
   return (
     <div className={styles.loginPanel}>
-      <div>
         <MainLink to="auth/login" text="Войти"/>
-      </div>
         <MainButton onClick={clickHandler} text='Зарегистрироваться'/>
     </div>
   )

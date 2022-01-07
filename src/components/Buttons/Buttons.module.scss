@@ -1,13 +1,21 @@
-.mainButton {
-  background: #198C36;
+.button {
+  background-color: #198C36;
   border-radius: 15px;
-  border:4px solid transparent;
+  border:3px solid transparent;
   color: #FBFAF7;
   font-family: "Noto Sans";
   font-size: 16px;
   font-weight: 400;
-  padding: 10px 35px;  
-	overflow:hidden;
+  padding: 10px 35px;
+  transition: background-color .2s;
+  &:hover {
+    border: 3px solid #FEC200; 
+    background-color: brown;
+  }
+}
+
+.main {
+  overflow:hidden;
   position: relative;
 
   &::before {
@@ -18,7 +26,6 @@
     left: -20px;
     transition: all 200ms ease;
   }
-
   &::after {
     font-family: 'FontAwesome';
     content:"\f06b";
@@ -27,14 +34,21 @@
     right: -20px;
     transition: all 200ms ease;
   }
-
   &:hover::before {
     left: 8px;
   }
   &:hover::after {
     right: 8px;
   }
-  &:hover {
-    border: 4px solid #FEC200; 
-  }
+}
+
+.google {
+  width: 180px;
+  height: 80px;
+  background-image: url('../../icongoogle.png');
+  background-size: 70px;
+  background-position: center left;
+  background-repeat: no-repeat;
+  text-align: right;
+  padding-right: 10px;
 }
