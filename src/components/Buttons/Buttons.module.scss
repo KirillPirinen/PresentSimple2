@@ -1,0 +1,40 @@
+.mainButton {
+  background: #198C36;
+  border-radius: 15px;
+  border:4px solid transparent;
+  color: #FBFAF7;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 35px;  
+	overflow:hidden;
+  position: relative;
+
+  &::before {
+    font-family: 'FontAwesome';
+    content:"\f06b";
+    position: absolute;
+    top: 25%;
+    left: -20px;
+    transition: all 200ms ease;
+  }
+
+  &::after {
+    font-family: 'FontAwesome';
+    content:"\f06b";
+    position: absolute;
+    top: 25%;
+    right: -20px;
+    transition: all 200ms ease;
+  }
+
+  &:hover::before {
+    left: 8px;
+  }
+  &:hover::after {
+    right: 8px;
+  }
+  &:hover {
+    border: 4px solid #FEC200; 
+  }
+}
