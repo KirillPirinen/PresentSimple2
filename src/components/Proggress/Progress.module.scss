@@ -1,0 +1,20 @@
+$color-primary: currentColor;
+
+  progress {
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none;
+    background-color: #ddd;
+    border-radius: 3px;
+    height: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    /* background: */
+    &::-webkit-progress-bar {background-color: #ddd; width: 100%;}
+    /* value: */
+    &::-webkit-progress-value {background-color: $color-primary !important;}
+    &::-moz-progress-bar {background-color: $color-primary !important;}
+    &::-moz-progress-bar {background: $color-primary;}
+  }
+

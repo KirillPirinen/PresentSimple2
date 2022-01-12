@@ -8,6 +8,8 @@
   font-weight: 400;
   padding: 10px 35px;
   transition: background-color .2s;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  
   &:hover {
     border: 3px solid #FEC200; 
     background-color: brown;

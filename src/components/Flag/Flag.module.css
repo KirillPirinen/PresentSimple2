@@ -1,0 +1,27 @@
+.flag {
+  width: 55px;
+  word-break: break-all;
+  min-height: 38px;
+  padding-top: 10px;
+  position: absolute; 
+  background: rgba(59, 12, 45, 0.8);
+  color: white;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  top:0;
+  right: 5px;
+}
+
+.flag:after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid white;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+}

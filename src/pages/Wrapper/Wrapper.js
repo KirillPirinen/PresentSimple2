@@ -3,8 +3,8 @@ import styles from './Wrapper.module.css'
 
 export const Wrapper = () => {
   return (
-    <div className={styles.wrapper}>
+    <main className={styles.wrapper}>
       <Outlet/>
-    </div>
+    </main>
   )
 }

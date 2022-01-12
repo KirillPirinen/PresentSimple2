@@ -1,0 +1,81 @@
+@import '../../components/index.module.scss';
+
+.content {
+  flex-direction: row;
+  justify-content: space-evenly;
+  & > div {
+   width: 45%;
+   ul, ol {
+     text-align:left;
+    li {
+      padding: 5px;
+    }
+   }
+ }
+ .search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   width: 45%;
+   min-height: 400px;
+   background: url('../../Search.png') center top no-repeat;
+ }
+
+ .forms {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   flex-basis: 55%;
+   flex-grow: 2;
+   min-width: 400px;
+
+   h4 {
+    width: 100%;
+   }
+   
+    & > div {
+      width: 25%;
+      margin: 10px 10px 30px;
+      min-width: 250px;
+      background: gainsboro;
+      box-shadow: 5px 5px 20px #E9E4D5;
+      border-radius: 15px;
+      transition: transform 0.1s;
+    }
+    .active {
+      background: #FBFAF7;
+      a{
+        color: green;
+      }
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+        span {
+          opacity:1;
+        }
+      }
+      span {
+        color:green;
+        opacity: 0;
+        transition: all 0.2s;
+      }
+    }
+
+    .button {
+      flex-basis: 100%;
+      box-shadow: none;
+      background: inherit;
+    }
+  }
+
+  .userBlock {
+    flex-basis: 25%;
+    flex-grow: 2;
+    min-width: 300px;
+    align-self:flex-start;
+    
+  }
+}
+
