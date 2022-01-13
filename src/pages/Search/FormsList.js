@@ -16,7 +16,7 @@ export const FormsList = ({forms, withUser}) => {
 
   const activeProp = (active, id) => active ? {
     className:styles.active,
-    onClick:()=>navigate(`/presents/${id}`),
+    onClick:()=>navigate(`/filledform/${id}`),
     key:id
   } : {key:id}
 

@@ -11,7 +11,7 @@ export const SearchResults = () => {
     {id:'3', name:'Петр', lname:'Иванов', createdAt:new Date(), updatedAt:false, isActive:false}
   ]
   //const forms = false;
-  const user = true
+  const user = false
 
   return (
     <>

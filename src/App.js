@@ -9,11 +9,23 @@ import { Search } from "./pages/Search/Search";
 import { Wrapper } from "./pages/Wrapper/Wrapper";
 import "moment/locale/ru";
 import { Wishes } from "./pages/Wishes/Wishes";
+import { FilledFormData } from "./pages/FilledFormData/FilledFormData";
+import { NewForm } from "./pages/NewForm/NewForm";
+import { Informer } from "./components/Informer/Informer";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuth } from "./redux/actions/User.ac";
 
 function App() {
+  const user = useSelector(state=>state.user)
+
+  useEffect(()=> {
+    window.localStorage.setItem('user', JSON.stringify(user))
+  }, [user])
+
   return (
     <BrowserRouter>
-      <Header/>
+      <Header user={user}/>
       <Routes>
         <Route path="/" element={<Wrapper />}>
 
@@ -27,7 +39,9 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="dashboard" element={<div>Защищенный рут</div>} />
             <Route path="search" element={<Search/>} />
+            <Route path="newform" element={<NewForm/>} />
             <Route path="wishlist/:id" element={<Wishes/>} />
+            <Route path="filledform/:uuid" element={<FilledFormData/>} />
           </Route>
 
           <Route path="*" element={
@@ -40,6 +54,7 @@ function App() {
 
         </Route>
       </Routes>
+      <Informer/>
     </BrowserRouter>
   )
 }

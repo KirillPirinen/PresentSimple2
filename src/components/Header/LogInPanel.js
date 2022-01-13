@@ -1,17 +1,27 @@
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { signOut } from "../../redux/actions/User.ac"
 import { MainButton } from "../Buttons/MainButton"
+import { ImitationLink } from "../Links/ImitationLink"
 import { MainLink } from "../Links/MainLink"
 import styles from "./Header.module.scss"
 
-export const LogInPanel = () => {
+export const LogInPanel = ({user}) => {
   const clickHandler = useNavigate().bind(null, 'auth/signup')
-  const fakeauth = true;
+  const dispatch = useDispatch()
+
+  const logoutHandler = (e) => {
+    e.preventDefault()
+    dispatch(signOut())
+  }
+
   return (
     <div className={styles.loginPanel}>
       {
-        fakeauth ? (
+        user ? (
           <>
-            <MainLink to="profile" text="Мой профиль"/>
+            <MainLink to="profile" text={user.name}/>
+            <ImitationLink onClick={logoutHandler} to="logout" text='Выйти'/>
             <MainLink to="search" text="Найти список желаний"/>
           </>
         ) : (

@@ -1,7 +1,8 @@
-@import url('../../components/index.module.scss');
+@import '../../components/common.scss';
 
 .content {
-  
+  @include content;
+
 .login, .signUp {
   display: flex;
   flex-direction: row;
@@ -39,15 +40,15 @@
     }
   }
 }
+  .login > div {
+    background: url('../../developer.png') bottom center no-repeat;
+    background-size: 63%;
+    padding-bottom: 30%;
+  }
+
+  .signUp > div {
+    background: url('../../people.png') center center no-repeat;
+    background-size: contain;
+  }
 }
 
-.login > div {
-  background: url('../../developer.png') bottom center no-repeat;
-  background-size: 43%;
-  padding-bottom: 20%;
-}
-
-.signUp > div {
-  background: url('../../people.png') center center no-repeat;
-  background-size: contain;
-}

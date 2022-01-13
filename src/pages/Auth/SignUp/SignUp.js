@@ -1,10 +1,11 @@
 import { SimpleButton } from '../../../components/Buttons/SimpleButton'
 import { MainInput } from '../../../components/Inputs/MainInput'
 import styles from '../Auth.module.scss'
-import googleico from '../../../icongoogle.png'
 import { GoogleButton } from '../../../components/Buttons/GoogleButton'
+import { useOutletContext } from 'react-router-dom'
 
 export const SignUp = () => {
+  const utils = useOutletContext()
   return (
     <div className={styles.signUp}>
       <div>
@@ -12,20 +13,23 @@ export const SignUp = () => {
           Один шаг до вступления.
         </h3>
         <p>
-          Не забудьте заполнить свой список желаний. Так вашим друзьям будет проще подобрать вам подарок, а вам получить то что нужно!
+          Не забудьте заполнить свой список желаний. Так ваши друзьям c легкостью подоберут вам подарок, и вы получите то что нужно!
         </p>
       </div>
-      <form>
-        <MainInput type="text" placeholder="Имя" required/>
-        <MainInput type="text" placeholder="Фамилия"/>
-        <MainInput type="phone" placeholder="Телефон" required/>
-        <MainInput type="email" placeholder="Ваш email" required/>
-        <MainInput type="password" placeholder="Пароль" required/>
-        <MainInput type="password" placeholder="Повторите пароль" required/>
+      <form onSubmit={utils.signUpSubmit}>
+        <MainInput name="name" type="text" placeholder="Имя" required/>
+        <MainInput name="lname" type="text" placeholder="Фамилия"/>
+        <MainInput name="phone" type="phone" placeholder="Телефон" required/>
+        <MainInput name="email" type="email" placeholder="Ваш email" required/>
+        <MainInput name="password" type="password" placeholder="Пароль" required/>
+        <MainInput name="password2" type="password" placeholder="Повторите пароль" required/>
         <br/>
         <SimpleButton text={'Присоединиться'}/>
         <div>
-          <GoogleButton/>
+        <GoogleButton
+            onSuccess={utils.onSuccess}
+            onFailure={utils.onSuccess}  
+          /> 
         </div>
       </form>
     </div>

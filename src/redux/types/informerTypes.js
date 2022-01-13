@@ -1,0 +1,2 @@
+export const SET_INFORMER = 'SET_INFORMER'
+export const CLEAR_INFORMER = 'CLEAR_INFORMER'

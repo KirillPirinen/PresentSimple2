@@ -2,11 +2,11 @@ import styles from './Header.module.scss'
 import { LogInPanel } from './LogInPanel'
 import { Logo } from './Logo'
 
-export const Header = () => {
+export const Header = ({user}) => {
  return (
    <div className={styles.container}>
      <Logo/>
-     <LogInPanel/>
+     <LogInPanel user={user}/>
    </div>
  ) 
 }

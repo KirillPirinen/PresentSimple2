@@ -43,11 +43,11 @@ export const Wish = ({wish:{id, title, description, isBinded, WishPhoto, Group}}
                       value={Group.value} 
                       style={{color:getStatusColor(), width:'calc(100% - 60px)'}}
                     />
-                    <span>Учатников в группе {Group.value}/{Group.max}</span>
+                    <div>Учатников в группе {Group.value}/{Group.max}</div>
                   </>
                 )
               }
-              <h5>{title}</h5>
+              <h4>{title}</h4>
               <p>{description}</p>
             </div>
           </div>

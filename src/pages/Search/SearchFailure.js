@@ -2,16 +2,15 @@ import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { SimpleButton } from '../../components/Buttons/SimpleButton'
 import { MainInput } from '../../components/Inputs/MainInput'
-import styles from './Search.module.scss'
 
 export const SearchFailure = () => {
   const [query] = useSearchParams()
-  const [inputs, setInputs] = useState({name:'', lname:'', phone:query.get('phone'), phone:query.get('email')})
+  const [inputs, setInputs] = useState({name:'', lname:'', phone:query.get('phone'), email:query.get('email')})
   
   const changeHandler = (e) => {
     setInputs(prev=> ({...prev, [e.target.name]:e.target.value}))
   }
-
+  
   return (
     <>
       <div>
@@ -21,10 +20,10 @@ export const SearchFailure = () => {
       </div>
       <div>
         <form onChange={changeHandler}>
-          <MainInput type="text" name="name" value={inputs.name}/>
-          <MainInput type="text" name="lname" value={inputs.lname}/>
-          <MainInput type="phone" name="phone" value={inputs.phone}/>
-          <MainInput type="email" name="email" value={inputs.email}/>
+          <MainInput type="text" placeholder="имя" name="name" value={inputs.name}/>
+          <MainInput type="text" placeholder="фамилия" name="lname" value={inputs.lname}/>
+          <MainInput type="phone" placeholder="телефон" name="phone" value={inputs.phone}/>
+          <MainInput type="email" placeholder="email" name="email" value={inputs.email}/>
           <SimpleButton text="Отправить анкету"/>
         </form>
       </div>

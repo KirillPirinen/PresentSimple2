@@ -3,9 +3,11 @@ import styles from './Main.module.scss'
 import { StepCard } from './StepCard'
 import { MainButton } from '../../components/Buttons/MainButton'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const Main = () => {
   const clickHandler = useNavigate().bind(null, 'auth/signup')
+  const user = useSelector(state => state.user)
 
   return (
     <>
@@ -31,7 +33,7 @@ export const Main = () => {
           <p><hr/></p>
           <p>А ещё...</p>
           <p>Вы сможете создать или вступить в группу для покупки подарка и разделения его стоимости между участниками, а также многое другое.</p>
-          <p><MainButton text="Зарегистрироваться и начать!" onClick={clickHandler}/></p>
+          {user ? null : <p><MainButton text="Зарегистрироваться и начать!" onClick={clickHandler}/></p>}
       </div>
     </>
   )
