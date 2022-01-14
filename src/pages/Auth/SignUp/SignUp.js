@@ -18,8 +18,8 @@ export const SignUp = () => {
       </div>
       <form onSubmit={utils.signUpSubmit}>
         <MainInput name="name" type="text" placeholder="Имя" required/>
-        <MainInput name="lname" type="text" placeholder="Фамилия"/>
-        <MainInput name="phone" type="phone" placeholder="Телефон" required/>
+        <MainInput name="lname" type="text" placeholder="Фамилия" required/>
+        <MainInput name="phone" type="phone" placeholder="Телефон"/>
         <MainInput name="email" type="email" placeholder="Ваш email" required/>
         <MainInput name="password" type="password" placeholder="Пароль" required/>
         <MainInput name="password2" type="password" placeholder="Повторите пароль" required/>

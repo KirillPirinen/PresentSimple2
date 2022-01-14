@@ -22,6 +22,7 @@ export const Auth = () => {
     },
     onSuccess: (res) => {
       dispatch(googleIn({token:res?.tokenId}, redirectHandler))
+      console.log(res)
      },
     onFailure: (err) => {
      console.log(err)

@@ -1,4 +1,4 @@
-import {DELETE_USER, SET_USER } from "../types/userTypes";
+import {DELETE_USER, SET_USER} from "../types/userTypes";
 import initPoints from "../../config/endPoints";
 import customAxios from "../../axios/instance";
 
@@ -35,7 +35,6 @@ export const signIn = (payload, navigate) => async (dispatch) => {
 };
 
 export const googleIn = (payload, navigate) => async (dispatch) => {
-  console.log(payload)
   const {status, data} = await customAxios.post(initPoints.googleIn, payload)
   if(status === 200) {
     dispatch(setUser(data))

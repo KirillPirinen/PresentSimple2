@@ -1,8 +1,9 @@
 import { useSearchParams } from 'react-router-dom'
+import { Loader } from '../../components/Loader/Loader'
 import { getFormData } from '../../custom/getFormData'
 import styles from './Search.module.scss'
 import { SearchForm } from './SearchForm'
-import { SearchResults } from './SearchResults'
+import {SearchResults} from './SearchResults'
 
 export const Search = () => {
   const [query, setQuery] = useSearchParams()
@@ -13,11 +14,14 @@ export const Search = () => {
   }
 
   return (
+    <>
     <div className={styles.content}>
        {query.has('email') ? 
-       <SearchResults/> :
+       <SearchResults query={query}/> :
        <SearchForm submitHandler={submitHandler}/>
        }
     </div>
+    <Loader/>
+    </>
   )
 }

@@ -2,8 +2,8 @@ const { CHECK_FORM_UUID, SEND_FILLING_FORM, ERR_INTERNAL, SEND_FILLING_FORM_ERRO
 
 export const SentFormReducer = (state = {}, action) => {
   switch (action.type) {
-    case CHECK_FORM_UUID: 
-      return action.payload.status ? {status:true, data:action.payload.data, guest:action.payload.guest} : {status:false, message:action.payload.message}
+    case CHECK_FORM_UUID:
+      return action.payload
 
     case SEND_FILLING_FORM: return {status: false, message:action.payload.message, count:action.payload.count}
 

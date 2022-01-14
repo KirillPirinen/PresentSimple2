@@ -13,8 +13,10 @@ import { FilledFormData } from "./pages/FilledFormData/FilledFormData";
 import { NewForm } from "./pages/NewForm/NewForm";
 import { Informer } from "./components/Informer/Informer";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { checkAuth } from "./redux/actions/User.ac";
+import { useSelector } from "react-redux";
+import { FormGenerated } from "./pages/FormGenerated/FormGenerated";
+import { SentFormCheker } from "./pages/SentForm/SentFormChecker";
+import { FormContextProvider } from "./context/SentFormContext";
 
 function App() {
   const user = useSelector(state=>state.user)
@@ -35,13 +37,16 @@ function App() {
             <Route path="login" element={<Login/>} />
             <Route path="signup" element={<SignUp/>} />
           </Route>
-          
+
+          <Route path="sentform/:uuid" element={<FormContextProvider><SentFormCheker/></FormContextProvider>}/>
+
           <Route element={<RequireAuth />}>
             <Route path="dashboard" element={<div>Защищенный рут</div>} />
             <Route path="search" element={<Search/>} />
             <Route path="newform" element={<NewForm/>} />
             <Route path="wishlist/:id" element={<Wishes/>} />
             <Route path="filledform/:uuid" element={<FilledFormData/>} />
+            <Route path="successCreated" element={<FormGenerated/>}/>
           </Route>
 
           <Route path="*" element={

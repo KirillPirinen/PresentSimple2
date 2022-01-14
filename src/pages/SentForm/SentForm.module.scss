@@ -1,0 +1,9 @@
+@import '../../components/common.scss';
+
+.content {
+  @include content;
+  margin-bottom: 40px;
+  form {
+    width: 95%;
+  }
+}

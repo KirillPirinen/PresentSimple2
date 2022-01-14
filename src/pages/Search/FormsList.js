@@ -3,7 +3,7 @@ import moment from 'moment'
 import { SimpleButton } from '../../components/Buttons/SimpleButton'
 import { useNavigate } from 'react-router-dom'
 
-export const FormsList = ({forms, withUser}) => {
+export const FormsList = ({forms, withUser, setForce}) => {
   const navigate = useNavigate()
 
   let text;
@@ -42,7 +42,7 @@ export const FormsList = ({forms, withUser}) => {
         </div>
         ))}
         <div className={styles.button}>
-          <SimpleButton text="Данные устарели? Отправить новую"/>
+          <SimpleButton onClick={() => setForce(true)} text="Данные устарели? Отправить новую"/>
         </div>
     </div>
   )

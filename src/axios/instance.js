@@ -3,12 +3,21 @@ import axios from 'axios';
 import { setInformer } from "../redux/actions/Informer.ac";
 import store from "../redux/store";
 import { deleteUser } from "../redux/actions/User.ac";
+import { disableLoader, enableLoader } from "../redux/actions/loader.ac";
 
 const {dispatch} = store
 
 const customAxios = axios.create({
   baseURL: host,
   withCredentials:true
+});
+
+customAxios.interceptors.request.use(function (config) {
+  dispatch(enableLoader())
+  return config;
+}, function (error) {
+  dispatch(disableLoader())
+  return Promise.reject(error);
 });
 
 customAxios.interceptors.response.use(function (response) {
@@ -18,7 +27,7 @@ customAxios.interceptors.response.use(function (response) {
       dispatch(setInformer({info:response.data.info}))
     })
   }
-
+  dispatch(disableLoader())
   return response;
 }, function (error) {
   
@@ -33,7 +42,7 @@ customAxios.interceptors.response.use(function (response) {
       dispatch(setInformer({info:error.response.data.info}))
     })
   }
-
+  dispatch(disableLoader())
   return Promise.reject(error);
 });
 

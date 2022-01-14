@@ -1,0 +1,9 @@
+export const SEARCH_DATA = 'SEARCH_DATA'
+export const SET_DATA = 'SET_DATA';
+export const CLEAN_SEARCH_DATA = 'CLEAN_SEARCH_DATA'
+
+// export const CREATE_URL_FORM = 'CREATE_URL_FORM';
+
+// export const CLEAR_CHECKFORM_STATE = 'CLEAR_CHECKFORM_STATE';
+
+// export const SET_CONTACTS = "SET_CONTACTS";

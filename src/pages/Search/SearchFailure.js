@@ -1,16 +1,25 @@
 import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { SimpleButton } from '../../components/Buttons/SimpleButton'
 import { MainInput } from '../../components/Inputs/MainInput'
+import { makeNewForm } from '../../redux/actions/createForm.ac'
+import styles from './Search.module.scss'
 
-export const SearchFailure = () => {
-  const [query] = useSearchParams()
-  const [inputs, setInputs] = useState({name:'', lname:'', phone:query.get('phone'), email:query.get('email')})
-  
+export const SearchFailure = ({payload}) => {
+  const [inputs, setInputs] = useState(payload)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const changeHandler = (e) => {
     setInputs(prev=> ({...prev, [e.target.name]:e.target.value}))
   }
-  
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(makeNewForm(inputs, navigate))
+  }
+
   return (
     <>
       <div>
@@ -19,12 +28,13 @@ export const SearchFailure = () => {
         <p>Следить за статусом, можно дополнительно в Вашем профиле.</p>
       </div>
       <div>
-        <form onChange={changeHandler}>
-          <MainInput type="text" placeholder="имя" name="name" value={inputs.name}/>
-          <MainInput type="text" placeholder="фамилия" name="lname" value={inputs.lname}/>
-          <MainInput type="phone" placeholder="телефон" name="phone" value={inputs.phone}/>
-          <MainInput type="email" placeholder="email" name="email" value={inputs.email}/>
-          <SimpleButton text="Отправить анкету"/>
+        <form onSubmit={submitHandler} className={styles.forms} onChange={changeHandler}>
+          <MainInput type="text" placeholder="имя" name="name" defaultValue={inputs.name}/>
+          <MainInput type="text" placeholder="фамилия" name="lname" defaultValue={inputs.lname}/>
+          <MainInput type="phone" placeholder="телефон" name="phone" defaultValue={inputs.phone}/>
+          <MainInput type="email" placeholder="email" name="email" defaultValue={inputs.email}/>
+          <br/>
+          <SimpleButton text="Создать анкету"/>
         </form>
       </div>
     </>

@@ -1,0 +1,13 @@
+@import '../../components/common.scss';
+
+.content {
+  @include content;
+  .linkwrapper {
+    padding: 12px;
+    background:white;
+    border:2px solid transparentize($color: rgb(31, 97, 31), $amount: 0.5);
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
+  }
+}

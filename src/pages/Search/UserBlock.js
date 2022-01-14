@@ -4,6 +4,7 @@ import male from '../../avatars/maleDefault.jpg'
 import { SimpleButton } from '../../components/Buttons/SimpleButton';
 import { useNavigate } from 'react-router-dom';
 import { Avatar } from '../../components/Avatar/Avatar';
+import { Loader } from '../../components/Loader/Loader';
 
 export const UserBlock = ({user:{lname, name, id}}) => {
   const navigate = useNavigate()

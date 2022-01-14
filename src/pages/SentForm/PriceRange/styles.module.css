@@ -1,0 +1,30 @@
+.easy, .middle, .hard, .insane, .superhard {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.easy {
+  box-shadow: rgb(21, 138, 19) 10px -10px;
+  background-color: white;
+}
+
+.middle {
+  background-color:white;
+  box-shadow: rgba(189, 201, 18, 0.349) 10px -10px;
+}
+
+.hard {
+  background-color:white;
+  box-shadow: rgba(240, 149, 45, 0.315) 10px -10px;
+}
+.superhard {
+  background-color:white;
+  box-shadow: rgba(231, 98, 45, 0.294) 10px -10px;
+}
+.insane {
+  background-color:white;
+  box-shadow: rgba(163, 3, 155, 0.274) 10px -10px;
+}
+

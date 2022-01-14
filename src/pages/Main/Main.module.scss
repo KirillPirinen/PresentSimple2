@@ -23,6 +23,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 
   & > h2, & > p {
     width: 100%;
@@ -37,17 +38,20 @@
   
   .stepCard {
     position: relative;
+    margin: 10px;
+    padding-right: 40px;
     &::after{
       position: absolute;
       content: "";
       width: 50px;
       height: 30px;
-      right: -30px;
+      right: -10px;
       top: calc(50% - 10px);
       background: url('../../arrow.png') no-repeat;
       background-size: contain;
     }
   }
+
   .lastCard {
     background: url('../../circle.png') top center no-repeat;
     background-size: contain;

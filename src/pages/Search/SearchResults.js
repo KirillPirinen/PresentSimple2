@@ -1,23 +1,40 @@
-import { SimpleButton } from '../../components/Buttons/SimpleButton';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Loader } from '../../components/Loader/Loader';
+import { cleanSeachData, searchData } from '../../redux/actions/search.ac';
 import { FormsList } from './FormsList'
 import { SearchFailure } from './SearchFailure';
 import { UserBlock } from './UserBlock'
 
-export const SearchResults = () => {
+export const SearchResults = ({query}) => {
 
-  const forms = [
-    {id:'1', name:'Петр', lname:'Иванов', createdAt:new Date(), updatedAt:new Date(), isActive:true},
-    {id:'2', name:'Петр', lname:'Иванов', createdAt:new Date(), updatedAt:new Date(), isActive:true},
-    {id:'3', name:'Петр', lname:'Иванов', createdAt:new Date(), updatedAt:false, isActive:false}
-  ]
-  //const forms = false;
-  const user = false
+  const [forceNew, setForce] = useState(false)
 
-  return (
+  const {forms, user} = useSelector(state=>state.search)
+  const loader = useSelector(state=>state.loader)
+
+  const dispatch = useDispatch()
+
+  let payload = {email:query.get('email')}
+  const phone = query.get('phone')
+
+  if(phone && phone.length === 11) payload.phone = phone
+  if(forms) {
+    const {name, lname, email, phone} = forms[0]
+    payload = {name, lname, email, phone:phone || '', ...payload}
+  }
+
+  useEffect(()=> {
+    dispatch(searchData(payload))
+    return dispatch(cleanSeachData())
+  }, [dispatch])
+
+  return forceNew || ((!user && !forms) && !loader) ? (<SearchFailure payload={payload}/>) : (
     <>
-      {user && <UserBlock user={forms[0]}/>}
-      {forms && <FormsList forms={forms} withUser={Boolean(user)}/>}
-      {!(user || forms) && <SearchFailure/>}
+      {user && <UserBlock user={user}/>}
+      {forms && <FormsList setForce={setForce} forms={forms} withUser={Boolean(user)}/>}
     </>
   )
+    
 }
+
