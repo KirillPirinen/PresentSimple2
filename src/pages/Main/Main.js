@@ -4,6 +4,7 @@ import { StepCard } from './StepCard'
 import { MainButton } from '../../components/Buttons/MainButton'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { HrText } from '../../components/Dividers/HrText'
 
 export const Main = () => {
   const clickHandler = useNavigate().bind(null, 'auth/signup')
@@ -23,15 +24,16 @@ export const Main = () => {
         <img src={background} className={styles.image} />
       </div>
       <div className={styles.downContent}>
-          <h2>Это просто как раз-два-три</h2>
-          <p>Как это работает:</p>
+        <h2>Это просто как раз-два-три</h2>
+        <p>Как это работает:</p>
+        <div className={styles.steps}>
           <StepCard index={1} text={{p:'Проверяем, есть ли список желаний у Вашего друга или он уже заполнял анкету у нас', h4:'1 минута'}}/>
           <StepCard index={2} text={{p:'Если информация есть, выбираете подходящий подарок и бронируете его, чтобы другие не подарили тоже самое', h4:'1 минута'}}/>
           <StepCard index={3} text={{p:'Если нет, указываете контактные данные о друге, и отправляете ему ссылку на заполнение анкеты (можно анонимно, через наш сервис)', h4:'2 минуты'}}/>
           <StepCard index={4} text={{p:'После того, как анкета будет заполнена, Вам поступит уведомление. Данная анкета будет доступна всем зарегистрированным пользователям по контактным данным, поэтому желаемый подарок необходимо также забронировать', h4:'Сразу после заполнения другом анкеты'}}/>
           <StepCard index={5} text={{p:'Вручаем подарок!', h4:'☺'}} last={true}/>
-          <p><hr/></p>
-          <p>А ещё...</p>
+        </div>
+          <HrText text='А ещё...'/>
           <p>Вы сможете создать или вступить в группу для покупки подарка и разделения его стоимости между участниками, а также многое другое.</p>
           {user ? null : <p><MainButton text="Зарегистрироваться и начать!" onClick={clickHandler}/></p>}
       </div>

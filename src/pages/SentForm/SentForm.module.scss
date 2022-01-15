@@ -3,6 +3,9 @@
 .content {
   @include content;
   margin-bottom: 40px;
+  p {
+    margin: 5px;
+  }
   form {
     width: 95%;
   }

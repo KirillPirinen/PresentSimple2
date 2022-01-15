@@ -20,23 +20,31 @@
 
 .downContent {
   @include content;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
   margin-bottom: 50px;
+
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  hr {
+    width: 95%;
+  }
 
   & > h2, & > p {
     width: 100%;
     padding: 0 5px;
   }
 
-  div {
+  @mixin div {
     max-width: 25%;
     min-width: 200px;
     padding: 30px 10px;
   }
   
   .stepCard {
+    @include div;
     position: relative;
     margin: 10px;
     padding-right: 40px;
@@ -53,6 +61,7 @@
   }
 
   .lastCard {
+    @include div;
     background: url('../../circle.png') top center no-repeat;
     background-size: contain;
   }

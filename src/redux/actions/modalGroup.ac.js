@@ -1,5 +1,4 @@
 import { ALL_WISHES_PERSON, BIND_ALONE, CREATE_GROUP } from "../types/groupModalTypes";
-import { getProgressbar } from "./Progressbar.ac";
 import customFetch from "../../custom/customFetch";
 import initPoints from "../../config/endPoints";
 

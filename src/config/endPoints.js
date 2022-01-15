@@ -13,8 +13,9 @@ const initPoints = {
   createForm: "/api/v1/form/",
   searchPersonOrForm: "/api/v1/form/search",
   deliveryForm: (uuid) => `/api/v1/sentform/delivery/${uuid}`,
-  checkAndGetForm: (uuid) => `/api/v1/sentform/${uuid}`,
+  checkAndFillForm: (uuid) => `/api/v1/sentform/${uuid}`,
   //Вишлисты
+  getAllPresents: (uuid) => `/api/v1/presents/${uuid}`,
   getPersonWishes: (id) => `/api/v1/group/${id}`,
   createGroup: "/api/v1/group/",
   joinGroup:"api/v1/group/",

@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { FormGenerated } from "./pages/FormGenerated/FormGenerated";
 import { SentFormCheker } from "./pages/SentForm/SentFormChecker";
 import { FormContextProvider } from "./context/SentFormContext";
+import { Modal } from "./components/Modal/Modal";
 
 function App() {
   const user = useSelector(state=>state.user)
@@ -60,6 +61,7 @@ function App() {
         </Route>
       </Routes>
       <Informer/>
+      <Modal/>
     </BrowserRouter>
   )
 }

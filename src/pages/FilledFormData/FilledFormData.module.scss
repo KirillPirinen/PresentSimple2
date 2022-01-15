@@ -1,0 +1,37 @@
+@import '../../components/common.scss';
+
+.content {
+  @include content;
+  & > div {
+    width: 95%;
+    & > div {
+      flex-grow: 0;
+      border: 2px solid currentColor;
+    }
+  }
+}
+
+.easy {
+  @include range(rgb(21, 138, 19));
+  color: rgb(21, 138, 19);
+}
+
+.middle {
+  @include range(rgba(215, 218, 42, 0.801));
+  color: rgba(215, 218, 42, 0.801);
+}
+
+.hard {
+  @include range(rgba(240, 149, 45, 0.521));
+  color:rgba(240, 149, 45, 0.521);
+}
+
+.superhard {
+  @include range(rgba(231, 45, 45, 0.473));
+  color:rgba(231, 45, 45, 0.473);
+}
+
+.insane {
+  @include range(rgba(163, 3, 155, 0.514));
+  color:rgba(163, 3, 155, 0.514);
+}

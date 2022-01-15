@@ -1,18 +1,18 @@
 .button {
   background-color: #198C36;
   border-radius: 15px;
-  border:3px solid transparent;
+  border:2px solid transparent;
   color: #FBFAF7;
   font-family: "Noto Sans";
   font-size: 16px;
   font-weight: 400;
   padding: 10px 35px;
   transition: background-color .2s;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   
   &:hover {
-    border: 3px solid #FEC200; 
-    background-color: brown;
+    border: 2px solid #FEC200; 
+    background-color: rgba(149, 18, 18, 0.678);
   }
 }
 
@@ -54,4 +54,46 @@
   text-align: right;
   padding-right: 5px;
   word-break: break-word;
+}
+
+.plus {
+  position: relative;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    border: 2px solid currentColor;
+    border-radius: 5px;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 4px;
+    width: 50%;
+    background-color: currentColor;
+    top: 50%;
+    left: 50%;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: currentColor;
+    height: 50%;
+    width: 4px;
+  }
+  
+  &:hover::before,
+  &:hover:after {
+    background: #fff;
+    transition: 0.2s;
+  }
+  
+  &:hover {
+    background-color: currentColor;
+    transition: 0.2s;
+  }
 }

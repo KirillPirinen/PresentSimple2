@@ -1,0 +1,39 @@
+@import '../../../components/common.scss';
+
+@mixin content($color) {
+  @include range($color);
+  .info {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      margin: 5px;
+    }
+    button {
+      color:$color;
+    }
+  }
+}
+.easy {
+  @include content(rgb(21, 138, 19));
+  margin-top: 15px;
+}
+
+.middle {
+  @include content(rgba(215, 218, 42, 0.801));
+}
+
+.hard {
+  @include content(rgba(240, 149, 45, 0.521));
+}
+
+.superhard {
+  @include content(rgba(231, 45, 45, 0.473));
+}
+
+.insane {
+  @include content(rgba(163, 3, 155, 0.514));
+}
+

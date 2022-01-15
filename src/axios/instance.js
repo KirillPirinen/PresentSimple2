@@ -42,7 +42,9 @@ customAxios.interceptors.response.use(function (response) {
       dispatch(setInformer({info:error.response.data.info}))
     })
   }
+  
   dispatch(disableLoader())
+  
   return Promise.reject(error);
 });
 

@@ -1,24 +1,43 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, 
+  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { SendForm } from "../redux/actions/SentForm.ac";
 
 const formContext = createContext();
 
 export const FormContextProvider = ({ children }) => {
+  const {uuid} = useParams()
+
+  const ranges = useSelector((state) => state.sentForm.ranges);
+  const form = useSelector((state) => state.sentForm.form);
+
+  const getInitData = () => {
+    const stateFromLS = JSON.parse(window.localStorage.getItem(uuid))
+    return stateFromLS || null
+  }
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const {ranges, form} = useSelector((state) => state.sentForm);
-  const [data, setData] = useState([]);
 
-  useMemo(() => {
-    setData(ranges?.map((el) => ({ ...el, payload: [] })));
-  }, [ranges]);
+  const [data, setData] = useState(getInitData());
 
   const setRanges = (arr) => {
     setData(arr.map((el) => ({ ...el, payload: [] })));
   };
 
-  const changeHandler = (e, rangeid, inputid) => {
+  const clearForm = setRanges.bind(null, ranges)
+
+  useEffect(() => {
+    if(!Array.isArray(data) && ranges) setRanges(ranges)
+  }, [ranges]);
+
+  useEffect(() => {
+    if(Array.isArray(data)) localStorage.setItem(uuid, JSON.stringify(data));
+  }, [data]);
+
+
+  const changeHandler = useCallback((e, rangeid, inputid) => {
     setData((prev) => {
       return prev.map((range) => {
         if (range.id === rangeid) {
@@ -32,8 +51,8 @@ export const FormContextProvider = ({ children }) => {
         } else return range;
       });
     });
-  };
-
+  }, []);
+  
   const addInput = (rangeid, inputid) => {
     setData((prev) =>
       prev.map((range) => {
@@ -63,9 +82,14 @@ export const FormContextProvider = ({ children }) => {
     );
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(SendForm(form.id || uuid, data, navigate))
+  }
+
   return (
     <formContext.Provider
-      value={{ changeHandler, data, form, addInput, deleteInput, setRanges, dispatch, navigate }}
+      value={{ uuid, changeHandler, data, form, addInput, deleteInput, clearForm, dispatch, navigate, submitHandler }}
     >
       {children}
     </formContext.Provider>

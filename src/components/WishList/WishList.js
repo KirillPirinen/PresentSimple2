@@ -3,7 +3,7 @@ import { Wish } from '../Wish/Wish'
 import styles from './WishList.module.scss'
 
 export const WishList = () => {
-  const {id} = useParams()
+  
   const data = [
     {id:'1', title:'Носки', description:'Дыряевые с елочкой из озон за 500р', isBinded:true, WishPhoto:false, Group:{max:10, value:9}},
     {id:'2', title:'Носки', description:'Дыряевые с елочкой из озон за 500р', 

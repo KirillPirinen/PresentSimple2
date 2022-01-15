@@ -1,16 +1,19 @@
 import { useNavigate } from 'react-router-dom'
 import { Flag } from '../Flag/Flag'
+import { PriceTag } from '../Flag/PriceTag'
 import { Progress } from '../Proggress/Progress'
 import styles from './Wish.module.scss'
+import gift from '../../gift.png'
+import { useState } from 'react'
 
-export const Wish = ({wish:{id, title, description, isBinded, WishPhoto, Group}}) => {
+export const Wish = ({wish:{id, title, description, isBinded, WishPhoto, Group}, cost, ...rest}) => {
   const navigate = useNavigate()
 
   const divProps = 
     !isBinded || (Group && Group.max !== Group.value) ? 
     {
     className:`${styles.wish} ${styles.active}`,
-    onClick:()=> navigate(`/wish/${id}`)
+    onClick:null,
     } : 
     {
       className:styles.wish
@@ -24,16 +27,14 @@ export const Wish = ({wish:{id, title, description, isBinded, WishPhoto, Group}}
     }
 
   return (
-          <div {...divProps}>
-            {
-              WishPhoto.image && (
+          <div {...rest} {...divProps}>
+            <PriceTag text={cost}/>
+
                 <div className={styles.image}>
-                  <img src={WishPhoto.image}/>
+                  <img src={WishPhoto?.image || gift}/>
                 </div>
-              )
-            }
+
             <div className={styles.info}>
-              
               {
                 Group && (
                   <>

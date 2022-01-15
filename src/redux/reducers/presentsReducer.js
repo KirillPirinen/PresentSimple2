@@ -1,6 +1,6 @@
 import { GET_ALL_PRESENTS } from "../types/presentsTypes";
 
-export const presentReducer = (state=[], action) => {
+export const presentsReducer = (state=[], action) => {
   switch (action.type) {
     case GET_ALL_PRESENTS:
       return action.payload

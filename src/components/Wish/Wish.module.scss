@@ -9,9 +9,15 @@
 	transition: all 0.1s;
 	border: 2px solid transparent;
 	word-break: break-word;
+	position: relative;
 
 	p {
 		font-size: 14px;
+		text-align: center;
+	}
+
+	h4 {
+		text-align: center;
 	}
 
 	span {
@@ -52,7 +58,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: green;
+	background-color: currentColor;
 	color: #fff;
 	max-width: 50%;
 	width: auto;
@@ -71,4 +77,5 @@
 	text-align: left;
 	background: white;
 	position: relative;
+	color: black;
 }

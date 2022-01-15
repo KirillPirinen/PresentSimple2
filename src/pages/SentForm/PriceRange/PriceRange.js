@@ -1,16 +1,17 @@
-import { useState } from "react"
-import { SimpleButton } from "../../../components/Buttons/SimpleButton";
+import { useCallback, useState } from "react"
+import { PlusButton } from "../../../components/Buttons/PlusButton";
 import { useSentFormContext } from "../../../context/SentFormContext";
-import { PriceRangeInput } from "../PriceRangeInput/PriceRangeInput"
-import styles from "./styles.module.css";
+import PriceRangeInput from "../PriceRangeInput/PriceRangeInput"
+import styles from "./PriceRange.module.scss";
 
 export const PriceRange = ({range}) => {
-  const {addInput, deleteInput} = useSentFormContext()
-  const [counter, setCounter] = useState(range.payload.length)
+  const {addInput, deleteInput, data, changeHandler} = useSentFormContext()
 
-  const deleteHandler = (inputId) => {
+  const [counter, setCounter] = useState(range.payload.length)
+  
+  const deleteHandler = useCallback((inputId) => {
     deleteInput(range.id, inputId)
-  }
+  }, [])
   
   const clickHandler = () => {
     addInput(range.id, counter)
@@ -25,15 +26,23 @@ export const PriceRange = ({range}) => {
     range.to === 10000 ? styles.superhard :
     range.to === null ? styles.insane :  
     null}>
-      <h3>От {range.from} до {range.to ? range.to : '...'} руб.</h3>
- 
+
+      <div className={styles.info}>
+        <h3>От {range.from} до {range.to ? range.to : '...'} руб.</h3>
+        {range.payload.length <= 5 && <PlusButton onClick={clickHandler} />}
+      </div>
+
         {range.payload?.map(el => (
-          <PriceRangeInput rangeid={range.id} del={deleteHandler} {...el}/>
+          <PriceRangeInput 
+          rangeid={range.id} 
+          deleteSelf={deleteHandler} 
+          changeHandler={changeHandler}
+          {...el}
+          />
         ))}
-      
-      {range.payload.length <= 5 ? <p>
-        <SimpleButton rangeid={range.id} onClick={clickHandler} text="Добавить подарок"/> 
-        </p> : null}
+    
     </div>
   )
 }
+
+export default PriceRange

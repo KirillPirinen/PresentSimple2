@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Loader } from '../../components/Loader/Loader';
 import { cleanSeachData, searchData } from '../../redux/actions/search.ac';
 import { FormsList } from './FormsList'
 import { SearchFailure } from './SearchFailure';

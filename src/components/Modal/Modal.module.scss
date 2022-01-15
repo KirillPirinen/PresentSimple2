@@ -1,0 +1,66 @@
+@import '../common.scss';
+
+.modal {
+  min-height: 100%;
+  min-width: 100%;
+  background-color: rgba(28, 31, 29, 0.6);
+  top:0;
+  left: 0;
+  position: fixed;
+  display: none;
+  color: white;
+  font-weight: 700;
+  z-index: 100;
+  transition: all .4s;
+}
+.clickhere {
+  position: absolute;
+  animation: clickhere 4s infinite;
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #F2EFE6;
+  color: black;
+  min-height: 100px;
+  text-align: center;
+  min-width: 40%;
+  border-radius: 15px;
+  animation-duration: 0.5s;
+  animation-name: modalshadow;
+}
+
+@keyframes modalshadow {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 30px;
+  }
+}
+
+@keyframes clickhere {
+  0% {
+    opacity: 0.5;
+    bottom: 15%;
+  }
+  50% {
+    opacity: 2;
+    bottom: 25%;
+  }
+  100% {
+    opacity: 0.5;
+    bottom: 15%;
+  }
+}
+

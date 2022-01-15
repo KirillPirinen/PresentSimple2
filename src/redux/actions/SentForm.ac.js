@@ -3,38 +3,27 @@ import initPoints from "../../config/endPoints"
 import { CHECK_FORM_UUID, CLEAR_SENTFORM, ERR_INTERNAL, FORM_DELIVERED, SEND_FILLING_FORM, SEND_FILLING_FORM_ERROR } from "../types/sentform.types"
 import { disableLoader, enableLoader } from "./loader.ac"
 
-export const CheckUUID = (uuid) => async (dispatch) => {
-    const {status, data} = await customAxios.get(initPoints.checkAndGetForm(uuid))
+export const CheckUUID = (uuid, navigate) => async (dispatch) => {
+  try{
+
+    const {status, data} = await customAxios.get(initPoints.checkAndFillForm(uuid))
     if(status === 200) 
     return dispatch({type:CHECK_FORM_UUID, payload:data})
+
+  } catch (err){
+    if(err.response.status === 410) {
+      window.localStorage.removeItem(uuid)
+      navigate('/')
+    }
+  }
 }
 
-export const SendForm = (uuid, data, history) => async (dispatch) => {
-  dispatch(enableLoader())
-  try {
-    const response = await fetch(`http://localhost:3001/sentform/${uuid}`, {
-      method:"PATCH",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(data)
-    })
-    const {status, message, count} = await response.json()
-
-    switch (status) {
-      case "success":
-        dispatch({type:SEND_FILLING_FORM, payload:{status, message, count}})
-        setTimeout(() => {
-          history.push('/')
-          //dispatch({type:MODAL_INFO_DEACTIVATE})
-        }, 3000);
-        break;
-      case "empty":
-        dispatch({type:SEND_FILLING_FORM_ERROR, payload:{status, message}})
-        break;
-    }
-    dispatch(disableLoader())
-  } catch (err) {
-      dispatch({type:ERR_INTERNAL, payload:err})
-  }
+export const SendForm = (uuid, payload, navigate) => async (dispatch) => {
+      const {status} = await customAxios.patch(initPoints.checkAndFillForm(uuid), payload)
+      if(status === 200) {
+        window.localStorage.removeItem(uuid)
+        navigate('/')
+      }
 }
 
 export const deliverForm = uuid => async dispatch => {
