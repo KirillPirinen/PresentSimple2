@@ -30,14 +30,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #F2EFE6;
+  background: white;
   color: black;
-  min-height: 100px;
   text-align: center;
-  min-width: 40%;
   border-radius: 15px;
   animation-duration: 0.5s;
   animation-name: modalshadow;
+  max-width: 600px;
 }
 
 @keyframes modalshadow {
@@ -45,22 +44,22 @@
     top: -10%;
   }
   100% {
-    top: 30px;
+    top: 50%;
   }
 }
 
 @keyframes clickhere {
   0% {
     opacity: 0.5;
-    bottom: 15%;
+    bottom: 10%;
   }
   50% {
     opacity: 2;
-    bottom: 25%;
+    bottom: 20%;
   }
   100% {
     opacity: 0.5;
-    bottom: 15%;
+    bottom: 10%;
   }
 }
 

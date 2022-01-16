@@ -29,6 +29,14 @@
 	}
 }
 
+.wish.label {
+	opacity: 1;
+	flex-basis: 100%;
+	.info {
+		background: white;
+	}	
+}
+
 .wish.active {
 	opacity: 1;
 	&:hover {
@@ -79,3 +87,4 @@
 	position: relative;
 	color: black;
 }
+

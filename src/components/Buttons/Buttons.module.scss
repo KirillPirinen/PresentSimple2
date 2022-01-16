@@ -1,4 +1,4 @@
-.button {
+@mixin button {
   background-color: #198C36;
   border-radius: 15px;
   border:2px solid transparent;
@@ -17,6 +17,8 @@
 }
 
 .main {
+  @include button;
+  
   overflow:hidden;
   position: relative;
 
@@ -44,7 +46,7 @@
   }
 }
 
-.google {
+.google @
   width: 200px;
   height: 70px;
   background-image: url('../../icongoogle.png');
@@ -96,4 +98,9 @@
     background-color: currentColor;
     transition: 0.2s;
   }
+}
+
+.refuse {
+  background-color: rgb(161, 54, 54);
+  background-color: white;
 }

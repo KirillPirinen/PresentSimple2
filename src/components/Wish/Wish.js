@@ -5,20 +5,30 @@ import { Progress } from '../Proggress/Progress'
 import styles from './Wish.module.scss'
 import gift from '../../gift.png'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setModal } from '../../redux/actions/modal.ac'
 
-export const Wish = ({wish:{id, title, description, isBinded, WishPhoto, Group}, cost, ...rest}) => {
-  const navigate = useNavigate()
+export const Wish = ({wish, cost, label, ...rest}) => {
+
+  const dispatch = useDispatch()
+
+  const {id, title, description, isBinded, WishPhoto, Group} = wish;
 
   const divProps = 
+    label ? 
+    {
+      className:`${styles.wish} ${styles.label}`,
+    } :
     !isBinded || (Group && Group.max !== Group.value) ? 
     {
     className:`${styles.wish} ${styles.active}`,
-    onClick:null,
-    } : 
+    onClick:() => dispatch(setModal({wish, cost})),
+    } 
+    : 
     {
       className:styles.wish
     }
-
+    console.log(divProps)
     const getStatusColor = () => {
       const readyInd = Number(Group.value) / Number(Group.max)
       if(readyInd < 0.5) return 'red'
