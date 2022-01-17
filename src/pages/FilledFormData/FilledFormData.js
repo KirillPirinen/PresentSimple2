@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { Loader } from "../../components/Loader/Loader"
 import { Wish } from "../../components/Wish/Wish"
+import { setModal } from "../../redux/actions/modal.ac"
 import { getAllPresents } from "../../redux/actions/presents.ac"
 import styles from './FilledFormData.module.scss'
 
 
 const FilledFormRange = ({range}) => {
+  const dispatch = useDispatch()
   return (
     <>
             <h3>От {range.from} до {range.to ? range.to : '...'} руб.</h3>
@@ -19,7 +21,17 @@ const FilledFormRange = ({range}) => {
               range.to === 10000 ? styles.superhard :
               range.to === null ? styles.insane :  
               null}>
-                {range.Presents?.map(el=>(<Wish key={el.id} wish={el} cost={`от ${range.from} до ${range.to} ₽`}/>))}
+                {range.Presents?.map(wish=> {
+                  const cost = `от ${range.from} до ${range.to} ₽`;
+                  return (<Wish 
+                    key={wish.id} 
+                    wish={wish} 
+                    cost={cost} 
+                    onClick={() => dispatch(setModal({wish, cost}))}
+                    />
+                    )
+                }
+                )}
             </div>
     </>
   )

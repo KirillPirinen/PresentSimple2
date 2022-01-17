@@ -1,16 +1,13 @@
-import { useNavigate } from 'react-router-dom'
 import { Flag } from '../Flag/Flag'
 import { PriceTag } from '../Flag/PriceTag'
 import { Progress } from '../Proggress/Progress'
 import styles from './Wish.module.scss'
 import gift from '../../gift.png'
-import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setModal } from '../../redux/actions/modal.ac'
+import { host } from '../../config/endPoints'
 
 export const Wish = ({wish, cost, label, ...rest}) => {
-
-  const dispatch = useDispatch()
 
   const {id, title, description, isBinded, WishPhoto, Group} = wish;
 
@@ -22,13 +19,12 @@ export const Wish = ({wish, cost, label, ...rest}) => {
     !isBinded || (Group && Group.max !== Group.value) ? 
     {
     className:`${styles.wish} ${styles.active}`,
-    onClick:() => dispatch(setModal({wish, cost})),
     } 
     : 
     {
       className:styles.wish
     }
-    console.log(divProps)
+
     const getStatusColor = () => {
       const readyInd = Number(Group.value) / Number(Group.max)
       if(readyInd < 0.5) return 'red'
@@ -41,7 +37,7 @@ export const Wish = ({wish, cost, label, ...rest}) => {
             <PriceTag text={cost}/>
 
                 <div className={styles.image}>
-                  <img src={WishPhoto?.image || gift}/>
+                  <img src={WishPhoto?.image ? host + '/' + WishPhoto.image : gift}/>
                 </div>
 
             <div className={styles.info}>

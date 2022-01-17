@@ -15,6 +15,7 @@
 }
 .clickhere {
   position: absolute;
+  font-size: 18px;
   animation: clickhere 4s infinite;
 }
 
@@ -37,6 +38,7 @@
   animation-duration: 0.5s;
   animation-name: modalshadow;
   max-width: 600px;
+  box-shadow: rgb(22, 58, 36) 0px 0px 0px 3px, #887c0d 0px 0px 0px 9px, rgb(22, 58, 36) 0px 0px 0px 12px;
 }
 
 @keyframes modalshadow {
@@ -63,3 +65,11 @@
   }
 }
 
+.addForm {
+  display: flex;
+  flex-direction: column;
+  input, textarea {
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+}

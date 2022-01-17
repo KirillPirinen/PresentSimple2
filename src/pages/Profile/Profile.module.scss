@@ -1,0 +1,42 @@
+@import '../../components/common.scss';
+
+.content {
+  @include content;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.info {
+  margin-bottom: 40px;
+  display: flex;
+
+  h3 {
+    margin-left: 10px;
+  }
+}
+.wishTab {
+  background-color: #F2EFE6;
+  width: 100%;
+  .wishes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  h3 {
+    margin: 10px 0;
+  }
+  .addBtn {
+    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    left:20px;
+    color: rgb(5, 92, 5);
+    h5 {
+      margin: 0;
+    }
+  }
+}
+

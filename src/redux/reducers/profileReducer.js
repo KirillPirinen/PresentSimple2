@@ -4,19 +4,22 @@ import {
   EDIT_WISH,
   DELETE_WISH,
   WISH_IS_GIVEN,
-} from "../types/types";
+} from "../types/profileTypes";
 
-function wishReducer(state = {}, action) {
+import produce from "immer"
+
+function profileReducer(state = {}, action) {
   switch (action.type) {
     case ALL_WISHES: {
       return action.payload;
     }
 
     case ADD_WISH: {
-      const newState = { ...state };
-      newState.Wishlist = { ...newState.Wishlist };
-      newState.Wishlist.Wishes = [...newState.Wishlist.Wishes, action.payload];
-      return newState;
+      const newState =  produce(state, draft=> {
+        draft.Wishlist.Wishes.push(action.payload)
+      });
+      console.log(newState)
+      return newState
     }
 
     case EDIT_WISH: {
@@ -69,4 +72,4 @@ function wishReducer(state = {}, action) {
   }
 }
 
-export default wishReducer;
+export default profileReducer;

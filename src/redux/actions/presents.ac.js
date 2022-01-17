@@ -1,25 +1,24 @@
 import customAxios from "../../axios/instance"
 import initPoints from "../../config/endPoints"
-import { GET_ALL_PRESENTS } from "../types/presentsTypes"
+import { BIND_PRESENT, GET_ALL_PRESENTS } from "../types/presentsTypes"
+import { setInformer } from "./Informer.ac"
+import { clearModal } from "./modal.ac"
 
 
 export const getAllPresents = uuid => async dispatch => {
-  const {status, data} = await customAxios.get(initPoints.getAllPresents(uuid))
+  const {status, data} = await customAxios.get(initPoints.getAllPresentsBindPresent(uuid))
   if(status === 200) dispatch({type:GET_ALL_PRESENTS, payload:data})
 }
 
-// export const bindPresent = (uuid, id) => async dispatch => {
-//   try {
-//     const response = await fetch(`http://localhost:3001/presents/${uuid}`, {
-//       method:"PATCH",
-//       credentials:"include",
-//       headers:{"Content-Type":"application/json"},
-//       body:JSON.stringify({id})
-//     })
-//     const data = await response.json()
-//     dispatch(getError(data))
-//     dispatch(getAllPresents(uuid))
-//   } catch (err) {
-//     dispatch(getError(err))
-//   }
-// }
+export const bindPresent = (uuid, id, rangeid) => async dispatch => {
+  try {
+    const {status} = await customAxios.patch(initPoints.getAllPresentsBindPresent(uuid), {id})
+    if(status === 200) {
+      dispatch({type:BIND_PRESENT, payload:{rangeid, presentid:id}})
+      dispatch(clearModal())
+    }
+
+  } catch (err) {
+    setInformer({error:'Что-то пошло не по плану.'})
+  }
+}

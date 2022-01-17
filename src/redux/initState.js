@@ -7,6 +7,8 @@ const initState = {
   sentForm: {},
   presents:[],
   modal:{status:false},
+  wishlist:{},
+  profile:{}
 };
 
 export default initState;

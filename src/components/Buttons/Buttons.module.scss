@@ -9,11 +9,16 @@
   padding: 10px 35px;
   transition: background-color .2s;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin: 5px;
   
   &:hover {
     border: 2px solid #FEC200; 
-    background-color: rgba(149, 18, 18, 0.678);
+    background-color: rgba(6, 163, 14, 0.801);
   }
+}
+
+.simple {
+  @include button;
 }
 
 .main {
@@ -46,7 +51,8 @@
   }
 }
 
-.google @
+.google {
+  @include button;
   width: 200px;
   height: 70px;
   background-image: url('../../icongoogle.png');
@@ -62,7 +68,7 @@
   position: relative;
     width: 35px;
     height: 35px;
-    background: #fff;
+    background: inherit;
     border: 2px solid currentColor;
     border-radius: 5px;
   
@@ -101,6 +107,9 @@
 }
 
 .refuse {
+  @include button;
   background-color: rgb(161, 54, 54);
-  background-color: white;
+  &:hover {
+    background-color: rgba(149, 18, 18, 0.678);
+  }
 }

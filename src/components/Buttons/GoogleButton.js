@@ -8,7 +8,7 @@ export const GoogleButton = (props) => {
     clientId={process.env.REACT_APP_GOOGLE_ID}
     render={(renderProps) => 
       (
-      <button {...renderProps} type="button" className={`${styles.button} ${styles.google}`}>
+      <button {...renderProps} type="button" className={styles.google}>
         Войти с помощью Google
       </button>
       )

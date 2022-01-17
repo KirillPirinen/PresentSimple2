@@ -18,6 +18,7 @@ import { FormGenerated } from "./pages/FormGenerated/FormGenerated";
 import { SentFormCheker } from "./pages/SentForm/SentFormChecker";
 import { FormContextProvider } from "./context/SentFormContext";
 import { Modal } from "./components/Modal/Modal";
+import { Profile } from "./pages/Profile/Profile";
 
 function App() {
   const user = useSelector(state=>state.user)
@@ -42,10 +43,10 @@ function App() {
           <Route path="sentform/:uuid" element={<FormContextProvider><SentFormCheker/></FormContextProvider>}/>
 
           <Route element={<RequireAuth />}>
-            <Route path="dashboard" element={<div>Защищенный рут</div>} />
+            <Route path="profile" element={<Profile/>} />
             <Route path="search" element={<Search/>} />
             <Route path="newform" element={<NewForm/>} />
-            <Route path="wishlist/:id" element={<Wishes/>} />
+            <Route path="wishlist/:user_id" element={<Wishes/>} />
             <Route path="filledform/:uuid" element={<FilledFormData/>} />
             <Route path="successCreated" element={<FormGenerated/>}/>
           </Route>

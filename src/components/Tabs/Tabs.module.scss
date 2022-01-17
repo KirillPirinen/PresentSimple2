@@ -1,0 +1,60 @@
+/*Fun begins*/
+
+.container {
+	width: auto;
+  top:-55px;
+  left: 50%;
+  transform: translate(-50%, 0);
+	position: absolute;
+  display: flex;
+  flex-direction: row;
+
+  input {
+    padding-top: 10px;
+    display: none;
+  }
+
+  & > div {
+    width: auto;
+    font-weight: 700;
+    font-size: 16px;
+    display: block;
+    height: 55px;
+    padding: 1em 20px;
+    margin:0 2px;
+    color: #757575;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    background: rgb(172, 190, 172);
+    border-radius: 10px 10px 0 0;
+    transition: all 0.2s;
+  }
+
+  .active {
+    background: #F2EFE6;
+    box-shadow: inset 0 3px #FEC200;
+  }
+}
+
+
+/*Media query*/
+@media only screen and (max-width: 900px) {
+  .container > div span{
+    display: none;
+  }
+}
+
+/*Content Animation*/
+@keyframes fadeInScale {
+  0% {
+  	transform: scale(0.9);
+  	opacity: 0;
+  }
+  
+  100% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+}
+
