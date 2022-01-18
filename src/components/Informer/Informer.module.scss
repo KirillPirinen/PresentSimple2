@@ -20,7 +20,7 @@
   border: 2px solid currentColor;
   border-radius: 5px;
   animation: entering 0.5s ease-in-out;
-
+  z-index: 1000;
   &:hover{
     opacity: 1;
   }

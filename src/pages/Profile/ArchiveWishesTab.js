@@ -8,42 +8,32 @@ import { getCostByRange } from '../../custom/getCostByRange';
 import { setModal } from '../../redux/actions/modal.ac';
 import styles from './Profile.module.scss';
 
-const WishesTab = ({wishlist}) => {
+const ArchiveWishesTab = ({wishlist}) => {
   const dispatch = useDispatch()
 
   return !wishlist ? <Loader/> : 
       (
       <div className={styles.wishTab}>
-        <div className={styles.addBtn}>
-          <h5>Добавить подарок</h5>
-          <PlusButton onClick={()=>dispatch(setModal({addWish:true}))}/>
-        </div>
-        <h3>Создан: {moment(wishlist.createdAt).format('ll')}</h3>
-        <h3>Последнее обновление: {moment(wishlist.updatedAt).format('ll')}</h3>
-        <HrText text={wishlist.Wishes.length ? `Список ваших хотелок` : 'Список пуст'}/>
+        <h3>Подаренные подарки</h3>
+        <p>Вы можете повторно добавить эти подарки в свой список при необходимости или удалить навсегда.</p>
         <div className={styles.wishes}>
           {wishlist.Wishes?.reduce((acc, wish) => {
-            if(wish.isGiven) return acc;
+            if(!wish.isGiven) return acc
             const cost = getCostByRange(wish.pricerange_id)
             return acc.push(
             <Wish 
               cost={cost}
               key={wish.id} 
               wish={wish}
-              onClick={()=>dispatch(setModal({editWish:{
-                id:wish.id,
-                title:wish.title,
-                description:wish.description,
-                price:'',
-                cost
-              }}))}
+              onClick={()=>dispatch(setModal({restoreWish:wish, cost}))}
             />
             ), acc
           }, [])
           }
         </div>
+        <HrText text={wishlist.Wishes.length ? `Список того, что уже подарено ` : 'Список пуст'}/>
       </div>
       )
 }
 
-export default WishesTab
+export default ArchiveWishesTab

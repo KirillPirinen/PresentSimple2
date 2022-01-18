@@ -1,0 +1,35 @@
+@mixin formCard {
+  width: 25%;
+  margin: 10px 10px 30px;
+  min-width: 250px;
+  background: gainsboro;
+  box-shadow: 5px 5px 20px #E9E4D5;
+  border-radius: 15px;
+  transition: transform 0.1s;
+}  
+
+.unactive {
+     @include formCard;
+}
+
+.active {
+  @include formCard;
+  background: #FBFAF7;
+  a{
+    color: green;
+  }
+  &:hover {
+       transform: scale(1.1);
+       cursor: pointer;
+       span {
+         opacity:1;
+       }
+     }
+     span {
+       color:green;
+       opacity: 0;
+       transition: all 0.2s;
+     }
+   }
+
+ 

@@ -2,9 +2,10 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { clearModal } from "../../../redux/actions/modal.ac"
 import { bindPresent } from "../../../redux/actions/presents.ac"
-import { addNewWish, deleteWish, reloadWish } from "../../../redux/actions/profile.ac"
+import { addNewWish, archiveWish, deleteWish, reloadWish } from "../../../redux/actions/profile.ac"
 import { MainButton } from "../../Buttons/MainButton"
 import { RefuseButton } from "../../Buttons/RefuseButton"
+import { SimpleButton } from "../../Buttons/SimpleButton"
 import { HrText } from "../../Dividers/HrText"
 import { MainInput } from "../../Inputs/MainInput"
 import { MainTextArea } from "../../Inputs/MainTextArea"
@@ -43,7 +44,7 @@ export const AddWish = ({editWish}) => {
 
   return (
     <>
-      <h4>Добавить новый подарок в список желаний?</h4>
+      <h4>{editWish ? 'Редактирование' :'Добавить новый подарок в список желаний?'}</h4>
       <form onSubmit={submitAction} className={styles.addForm}>
             <MainInput 
               name='title' 
@@ -73,8 +74,12 @@ export const AddWish = ({editWish}) => {
               />
             <br/>
         <MainButton type="submit" text={editWish ? 'Редактировать' : 'Добавить'}/>
-        {editWish && <RefuseButton onClick={()=>dispatch(deleteWish(editWish?.id))} type="Button" text="Удалить"/>}
-        <RefuseButton type="button" onClick={()=>dispatch(clearModal())} text="Отменить" />
+        {editWish && 
+        (
+          <SimpleButton style={{backgroundColor:'#887c0d'}} onClick={()=>dispatch(archiveWish(editWish?.id))} type="Button" text="Мне уже подарили"/>
+        )
+        }
+        <RefuseButton style={{backgroundColor:'white', color:'black'}} type="button" onClick={()=>dispatch(clearModal())} text="Отмена" />
       </form>
       <HrText text='Примечание'/>
       <InfoText text={editWish ? 'Указывайте примерную стоимость числом, на карточке подарка отображается диапазон' :'Советуем максимально точно составлять описание'}/>

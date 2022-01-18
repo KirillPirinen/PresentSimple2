@@ -3,8 +3,6 @@ import { PriceTag } from '../Flag/PriceTag'
 import { Progress } from '../Proggress/Progress'
 import styles from './Wish.module.scss'
 import gift from '../../gift.png'
-import { useDispatch } from 'react-redux'
-import { setModal } from '../../redux/actions/modal.ac'
 import { host } from '../../config/endPoints'
 
 export const Wish = ({wish, cost, label, ...rest}) => {

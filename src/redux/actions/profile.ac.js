@@ -2,12 +2,9 @@ import customAxios from "../../axios/instance";
 import initPoints from "../../config/endPoints";
 
 import {
-  ADD_WISH,
-  ALL_WISHES,
-  DELETE_WISH,
-  EDIT_WISH,
-  WISH_IS_GIVEN,
-} from "../types/profileTypes";
+  ADD_WISH, ALL_WISHES, DELETE_WISH, EDIT_WISH, WISH_IS_GIVEN, EDIT_ONLY_PHOTO, DELETE_FORM, UNBIND_PRESENT, GIVE_PRESENT,
+} from "../types/profileTypes"; 
+
 import { clearModal } from "./modal.ac";
 
 export const getProfileData = () => async dispatch => {
@@ -34,19 +31,19 @@ export const addNewWish = payload => async dispatch => {
 
 export const reloadWish = payload => async dispatch => {
     const {status, data} = await customAxios.put(initPoints.addWish, payload)
-    console.log(data)
-    // if (result.status == 200) {
-    //   const editedWish = Object.fromEntries(wish);
-    //   const editedWishWithPhoto = {
-    //     ...editedWish,
-    //     WishPhoto: { image: result.filePath },
-    //   };
-      // return dispatch({
-      //   type: EDIT_WISH,
-      //   payload: editedWishWithPhoto,
-      // });
- //   }
- //return dispatch(clearModal())
+    if(status === 200) {
+      dispatch({
+        type: EDIT_WISH,
+        payload:data,
+      });
+      return dispatch(clearModal())
+    } else if (status === 206) {
+      dispatch({
+        type:EDIT_ONLY_PHOTO,
+        payload:data
+      })
+      return dispatch(clearModal())
+    }
 }
 
 export const deleteWish = id => async dispatch => {
@@ -56,21 +53,50 @@ export const deleteWish = id => async dispatch => {
         type: DELETE_WISH,
         payload: id,
       });
+      return dispatch(clearModal())
     }
-  return dispatch(clearModal())
 }
 
-export function isGiven(id) {
-  return async (dispatch) => {
-    await fetch(`http://localhost:3001/wish/${id}`, {
-      method: "PATCH",
-      credentials: "include",
-      body: id,
-    });
-    console.log(id, "GET ID SUKANAH");
-    return dispatch({
-      type: WISH_IS_GIVEN,
+export const archiveWish = id => async dispatch => {
+    const {status} = await customAxios.patch(initPoints.archiveWish(id))
+    if(status === 200) {
+      dispatch({
+        type: WISH_IS_GIVEN,
+        payload: id,
+      });
+      return dispatch(clearModal())
+    }
+}
+
+export const deleteForm = id => async dispatch => {
+  const {status} = await customAxios.delete(initPoints.deleteForm(id))
+  if(status === 200) {
+     dispatch({
+      type: DELETE_FORM,
       payload: id,
     });
-  };
+    return dispatch(clearModal())
+  }
+}
+
+export const unBindPresent = id => async dispatch => {
+  const {status} = await customAxios.patch(initPoints.unbindPresent(id))
+  if(status === 200) {
+     dispatch({
+      type: UNBIND_PRESENT,
+      payload: id,
+    });
+    return dispatch(clearModal())
+  }
+}
+
+export const givePresent = id => async dispatch => {
+  const {status} = await customAxios.patch(initPoints.givePresent(id))
+  if(status === 200) {
+     dispatch({
+      type: GIVE_PRESENT,
+      payload: id,
+    });
+    return dispatch(clearModal())
+  }
 }

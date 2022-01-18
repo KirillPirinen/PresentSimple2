@@ -4,68 +4,81 @@ import {
   EDIT_WISH,
   DELETE_WISH,
   WISH_IS_GIVEN,
+  EDIT_ONLY_PHOTO,
+  DELETE_FORM,
+  UNBIND_PRESENT,
+  GIVE_PRESENT,
 } from "../types/profileTypes";
 
 import produce from "immer"
 
 function profileReducer(state = {}, action) {
+
   switch (action.type) {
     case ALL_WISHES: {
       return action.payload;
     }
 
     case ADD_WISH: {
-      const newState =  produce(state, draft=> {
+      return produce(state, draft=> {
         draft.Wishlist.Wishes.push(action.payload)
       });
-      console.log(newState)
-      return newState
     }
 
     case EDIT_WISH: {
-      const newState = { ...state };
-      newState.Wishlist = { ...newState.Wishlist };
-
-      newState.Wishlist.Wishes = newState.Wishlist.Wishes.map((wish) => {
-        if (Number(action.payload.id) === Number(wish.id)) {
-          return {
-            ...wish,
-            WishPhoto: action.payload.WishPhoto,
-            title: action.payload.title,
-            description: action.payload.description,
-          };
-        }
-        return wish;
+      return produce(state, draft=> {
+        const index = draft.Wishlist.Wishes.findIndex(el=>{
+          return el.id === action.payload.id
+        })
+        draft.Wishlist.Wishes[index] = action.payload
       });
-      return newState;
+    }
+    
+    case EDIT_ONLY_PHOTO: {
+      return produce(state, draft=> {
+        const index = draft.Wishlist.Wishes.findIndex(el=>{
+          return el.id === action.payload.wish_id
+        })
+        draft.Wishlist.Wishes[index].WishPhoto = action.payload
+      });
     }
 
     case DELETE_WISH: {
-      const newState = { ...state };
-      newState.Wishlist = { ...newState.Wishlist };
-      newState.Wishlist.Wishes = newState.Wishlist.Wishes.filter(
-        (wish) => wish.id !== action.payload
-      );
-
-      return newState;
+     return produce(state, draft=> {
+        const index = draft.Wishlist.Wishes.findIndex(el=>{
+          return el.id === action.payload.id
+        })
+        draft.Wishlist.Wishes.splice(index, 1)
+      });
     }
 
     case WISH_IS_GIVEN: {
-      console.log(action, "GET ID SUKANAH");
-      const newState = { ...state };
-      newState.Wishlist = { ...newState.Wishlist };
-      newState.Wishlist.Wishes = newState.Wishlist.Wishes.map((wish) => {
-        if (Number(action.payload) === Number(wish.id)) {
-          console.log(action, "GET ID SUKANAH222");
-          return {
-            ...wish,
-            isGiven: true,
-          };
-        }
-        return wish;
+      return produce(state, draft=> {
+        const index = draft.Wishlist.Wishes.findIndex(el=>{
+          return el.id === action.payload
+        })
+        draft.Wishlist.Wishes[index].isGiven = !draft.Wishlist.Wishes[index].isGiven
       });
-      return newState;
     }
+
+    case DELETE_FORM: {
+      return produce(state, draft=> {
+         const index = draft.Forms.findIndex(el=>{
+           return el.id === action.payload
+         })
+         draft.Forms.splice(index, 1)
+       });
+     }
+
+     case UNBIND_PRESENT: 
+     case GIVE_PRESENT: {
+      return produce(state, draft=> {
+         const index = draft.Presents.findIndex(el=>{
+           return el.id === action.payload
+         })
+         draft.Presents.splice(index, 1)
+       });
+     }
 
     default:
       return state;

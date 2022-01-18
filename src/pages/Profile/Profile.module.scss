@@ -1,4 +1,12 @@
 @import '../../components/common.scss';
+@import '../../components/FormCard/Forms.module.scss';
+
+@mixin wishWrap {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
 
 .content {
   @include content;
@@ -15,14 +23,16 @@
     margin-left: 10px;
   }
 }
+
 .wishTab {
   background-color: #F2EFE6;
   width: 100%;
   .wishes {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    @include wishWrap;
     width: 100%;
+    & > div {
+      max-width: 600px;
+    }
   }
 
   h3 {
@@ -40,3 +50,44 @@
   }
 }
 
+.formsTab {
+  display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   min-width: 300px;
+
+   .unactive {
+    @include formCard;
+    cursor: pointer;
+    border:1px solid green;
+    &:hover {
+      transform: scale(1.1);
+      span {
+        opacity:1;
+      }
+    }
+   }
+}
+
+.wishContainer {
+  @include wishWrap;
+  .wishWrap {
+    flex-basis: 350px;
+    flex-grow: 2;
+    min-width: 200px;
+    max-width: 600px;
+    border: 2px solid transparent;
+    margin: 5px;
+    background: khaki;
+    transition: all 0.1s;
+    border-radius: 10px;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+      border: 2px solid rgba(59, 12, 45, 0.8);
+      z-index: 100;
+    }
+  }
+}

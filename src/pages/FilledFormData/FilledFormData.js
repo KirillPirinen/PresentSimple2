@@ -27,7 +27,7 @@ const FilledFormRange = ({range}) => {
                     key={wish.id} 
                     wish={wish} 
                     cost={cost} 
-                    onClick={() => dispatch(setModal({wish, cost}))}
+                    onClick={() => dispatch(setModal({present:wish, cost}))}
                     />
                     )
                 }
