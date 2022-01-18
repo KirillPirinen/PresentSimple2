@@ -1,5 +1,5 @@
 import {
-  ALL_WISHES_PERSON, BIND_ALONE, CREATE_GROUP,
+  ALL_WISHES_PERSON, BIND_ALONE, CREATE_GROUP, JOIN_GROUP,
 } from "../types/groupModalTypes";
 import produce from "immer"
 
@@ -24,6 +24,15 @@ export const wishesGroupAloneReducer = (state = [], action) => {
       const reloadedState = Object.assign({}, state)
       reloadedState.Wishes = reloadedState.Wishes.map(e => e.id == payload.wish_id ? {...e, isBinded:true, Group:payload} : e) 
       return reloadedState
+    }
+
+    case JOIN_GROUP: {
+      return produce(state, draft=> {
+        const index = draft.Wishes.findIndex(el=>{
+          return el.id === action.payload
+        })
+        draft.Wishes[index].Group.currentusers++;
+      });
     }
     
       default: return state;

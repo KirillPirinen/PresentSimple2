@@ -5,16 +5,16 @@ import styles from './Wish.module.scss'
 import gift from '../../gift.png'
 import { host } from '../../config/endPoints'
 
-export const Wish = ({wish, cost, label, ...rest}) => {
+export const Wish = ({wish, cost, label, addClass, ...rest}) => {
 
-  const {id, title, description, isBinded, WishPhoto, Group} = wish;
+  const {id, title, description, isBinded, WishPhoto, Group, isGiven} = wish;
 
   const divProps = 
     label ? 
     {
       className:`${styles.wish} ${styles.label}`,
     } :
-    !isBinded || (Group && Group.max !== Group.value) ? 
+    !isBinded || isGiven || (Group && Group.maxusers !== Group.currentusers) ? 
     {
     className:`${styles.wish} ${styles.active}`,
     } 
@@ -22,6 +22,8 @@ export const Wish = ({wish, cost, label, ...rest}) => {
     {
       className:styles.wish
     }
+
+    if(addClass) divProps.className = divProps.className + " " + addClass;
 
     const getStatusColor = () => {
       const readyInd = Number(Group.value) / Number(Group.max)
@@ -42,13 +44,13 @@ export const Wish = ({wish, cost, label, ...rest}) => {
               {
                 Group && (
                   <>
-                    <Flag text={'Дарит группа'}/>
+                    {label || <Flag text={'Дарит группа'}/>}
                     <Progress 
-                      max={Group.max} 
-                      value={Group.value} 
+                      max={Group.maxusers} 
+                      value={Group.currentusers} 
                       style={{color:getStatusColor(), width:'calc(100% - 60px)'}}
                     />
-                    <div>Учатников в группе {Group.value}/{Group.max}</div>
+                    <div>Участников в группе {Group.currentusers}/{Group.maxusers}</div>
                   </>
                 )
               }

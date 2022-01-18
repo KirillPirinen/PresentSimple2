@@ -1,4 +1,4 @@
-import styles from "./Inputs.module.css"
+import styles from "./Inputs.module.scss"
 
 export const MainTextArea = ({...rest}) => {
   return (

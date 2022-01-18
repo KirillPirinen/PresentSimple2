@@ -7,7 +7,7 @@ import styles from './WishList.module.scss'
 export const WishList = ({data}) => {
   const dispatch = useDispatch()
 
-  const activeProp = (e) => !e.isBinded ? {
+  const activeProp = (e) => !e.isBinded || (e.Group && e.Group.maxusers !== e.Group.currentusers) ? {
     onClick:()=>dispatch(setModal({wish:e, cost:e.cost})),
     key:e.id,
     wish:e

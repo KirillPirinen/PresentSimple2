@@ -30,13 +30,15 @@ const WishesTab = ({wishlist}) => {
               cost={cost}
               key={wish.id} 
               wish={wish}
+              addClass={styles.customWish}
               onClick={()=>dispatch(setModal({editWish:{
                 id:wish.id,
                 title:wish.title,
                 description:wish.description,
                 price:'',
-                cost
-              }}))}
+                cost,
+                isBinded:wish.isBinded
+            }}))}
             />
             ), acc
           }, [])

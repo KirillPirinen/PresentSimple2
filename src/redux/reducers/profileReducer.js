@@ -58,6 +58,8 @@ function profileReducer(state = {}, action) {
           return el.id === action.payload
         })
         draft.Wishlist.Wishes[index].isGiven = !draft.Wishlist.Wishes[index].isGiven
+        draft.Wishlist.Wishes[index].isBinded = false
+        draft.Wishlist.Wishes[index].Group = null
       });
     }
 

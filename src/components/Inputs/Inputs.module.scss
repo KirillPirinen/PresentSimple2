@@ -1,4 +1,4 @@
-.mainInput {
+@mixin defs {
   background: #FFFFFF;
   border: 1px solid #F2EFE6;
   box-sizing: border-box;
@@ -9,4 +9,14 @@
   font-size: 25px;
   max-width: 400px;
   max-height: 200px;
+}
+
+.mainInput {
+  @include defs;
+}
+
+.select {
+  @include defs;
+  font-size: 20px;
+  border-radius: 15px;
 }
