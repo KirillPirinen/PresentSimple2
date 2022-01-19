@@ -1,0 +1,23 @@
+
+.card {
+  color:white;
+  background-color: rgb(22, 58, 36);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+  padding: 10px 5px;
+  border: 2px solid white;
+  transition: all 0.1s;
+  order:2;
+  cursor: pointer;
+   &:hover {
+     transform: scale(1.1);
+   }
+}
+
+.label {
+  order: 1;
+  padding: 10px 5px;
+}

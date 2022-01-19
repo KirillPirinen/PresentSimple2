@@ -8,6 +8,8 @@ import {
   DELETE_FORM,
   UNBIND_PRESENT,
   GIVE_PRESENT,
+  GIVE_WISH,
+  UNBIND_WISH,
 } from "../types/profileTypes";
 
 import produce from "immer"
@@ -22,6 +24,16 @@ function profileReducer(state = {}, action) {
     case ADD_WISH: {
       return produce(state, draft=> {
         draft.Wishlist.Wishes.push(action.payload)
+      });
+    }
+    
+    case UNBIND_WISH:
+    case GIVE_WISH: {
+      return produce(state, draft=> {
+        const index = draft.Wishes.findIndex(el=>{
+          return el.id === action.payload
+        })
+        draft.Wishes.splice(index, 1)
       });
     }
 

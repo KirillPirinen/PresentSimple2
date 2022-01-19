@@ -1,0 +1,26 @@
+@import '../common.scss';
+
+.groupCard {
+@include formCard;
+min-width: 160px;
+height: 140px;
+background: #FBFAF7;
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    span {
+      opacity:1;
+    }
+  }
+  span {
+    color:green;
+    opacity: 0;
+    transition: all 0.2s;
+  }
+  h4 {
+    margin: 15px;
+  }
+  p {
+    margin: 5px;
+  }
+}

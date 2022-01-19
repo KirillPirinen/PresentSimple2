@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { clearModal } from "../../../redux/actions/modal.ac"
 import { bindPresent } from "../../../redux/actions/presents.ac"
-import { addNewWish, archiveWish, deleteWish, reloadWish } from "../../../redux/actions/profile.ac"
+import { addNewWish, toggleStatusWish, deleteWish, reloadWish } from "../../../redux/actions/profile.ac"
 import { MainButton } from "../../Buttons/MainButton"
 import { RefuseButton } from "../../Buttons/RefuseButton"
 import { SimpleButton } from "../../Buttons/SimpleButton"
@@ -48,7 +48,7 @@ export const AddWish = ({editWish}) => {
       <>
         <h3>Упс... Похоже кто-то уже собрался дарить данный подарок</h3>
         <p>Отредактировать данные не получится, дождитесь когда его Вам вручат и переместите в архив.</p>
-        <SimpleButton style={{backgroundColor:'#887c0d'}} onClick={()=>dispatch(archiveWish(editWish?.id))} type="Button" text="Мне уже подарили"/>
+        <SimpleButton style={{backgroundColor:'#887c0d'}} onClick={()=>dispatch(toggleStatusWish(editWish?.id))} type="Button" text="Мне уже подарили"/>
         <RefuseButton style={{backgroundColor:'white', color:'black'}} type="button" onClick={()=>dispatch(clearModal())} text="Отмена" />
         <HrText text='Примечание'/>
         <InfoText text="Не удаляйте подарок до вручения, иначе даритель может его потерять"/>
@@ -89,7 +89,7 @@ export const AddWish = ({editWish}) => {
           <MainButton type="submit" text={editWish ? 'Редактировать' : 'Добавить'}/>
           {editWish && 
           (
-            <SimpleButton style={{backgroundColor:'#887c0d'}} onClick={()=>dispatch(archiveWish(editWish?.id))} type="Button" text="Мне уже подарили"/>
+            <SimpleButton style={{backgroundColor:'#887c0d'}} onClick={()=>dispatch(toggleStatusWish(editWish?.id))} type="Button" text="Мне уже подарили"/>
           )
           }
           <RefuseButton style={{backgroundColor:'white', color:'black'}} type="button" onClick={()=>dispatch(clearModal())} text="Отмена" />

@@ -8,7 +8,8 @@ const initState = {
   presents:[],
   modal:{status:false},
   wishlist:{},
-  profile:{}
+  profile:{},
+  groupPage:null
 };
 
 export default initState;

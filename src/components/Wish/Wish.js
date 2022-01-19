@@ -4,10 +4,14 @@ import { Progress } from '../Proggress/Progress'
 import styles from './Wish.module.scss'
 import gift from '../../gift.png'
 import { host } from '../../config/endPoints'
+import { getStatusColor } from '../../custom/getStatusColor'
+import { getCostByRange } from '../../custom/getCostByRange'
 
-export const Wish = ({wish, cost, label, addClass, ...rest}) => {
+export const Wish = ({wish, label, addClass, ...rest}) => {
 
-  const {id, title, description, isBinded, WishPhoto, Group, isGiven} = wish;
+  const {id, title, description, isBinded, WishPhoto, Group, isGiven, pricerange_id} = wish;
+
+  const cost = getCostByRange(pricerange_id)
 
   const divProps = 
     label ? 
@@ -25,13 +29,6 @@ export const Wish = ({wish, cost, label, addClass, ...rest}) => {
 
     if(addClass) divProps.className = divProps.className + " " + addClass;
 
-    const getStatusColor = () => {
-      const readyInd = Number(Group.value) / Number(Group.max)
-      if(readyInd < 0.5) return 'red'
-      else if (readyInd < 0.8) return 'yellow'
-      else return 'green'
-    }
-
   return (
           <div {...rest} {...divProps}>
             <PriceTag text={cost}/>
@@ -48,7 +45,7 @@ export const Wish = ({wish, cost, label, addClass, ...rest}) => {
                     <Progress 
                       max={Group.maxusers} 
                       value={Group.currentusers} 
-                      style={{color:getStatusColor(), width:'calc(100% - 60px)'}}
+                      style={{color:getStatusColor(Group.currentusers, Group.maxusers), width:'calc(100% - 60px)'}}
                     />
                     <div>Участников в группе {Group.currentusers}/{Group.maxusers}</div>
                   </>

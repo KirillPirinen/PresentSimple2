@@ -18,22 +18,29 @@ const GiveTab = ({wishes, presents}) => {
   return (!wishes || !presents) ? <Loader/> : 
       (<>
         <HrText/>
-        <h4>Подарки из списков зарегистрированных пользователей:</h4>
+        <h4>Подарки из списков зарегистрированных пользователей: {wishes.length}</h4>
         <HrText/>
         <div className={styles.wishContainer}>
         {wishes?.map(wish => {
-            wish.isBinded = false;
+            const cost = getCostByRange(wish.pricerange_id)
             return (
+            <div 
+            className={styles.wishWrap}
+            onClick={()=>dispatch(setModal({unBind:wish, cost}))}
+            >
+              <h4>Подарок для {wish.Wishlist.User.name} {wish.Wishlist.User.lname}</h4>
               <Wish 
-              cost={getCostByRange(wish.pricerange_id)}
+              cost={cost}
               key={wish.id} 
               wish={wish}
-            />
+              label={true}
+              />
+            </div>
             )
           })}
         </div>
         <HrText/>
-        <h4>Подарки из анкет:</h4>
+        <h4>Подарки из анкет: {presents.length}</h4>
         <HrText/>
         <div className={styles.wishContainer}>
           {presents?.map(present => {

@@ -25,10 +25,13 @@ const initPoints = {
   addWish:'/api/v1/profile/wish',
   editWish:'/api/v1/profile/wish',
   deleteWish: (id) => `/api/v1/profile/wish/${id}`,
-  archiveWish: (id) => `/api/v1/profile/wish/${id}`,
+  toggleStatus: (id) => `/api/v1/profile/wish/own/${id}`,
+  giveWish: (id) => `/api/v1/profile/wish/given/${id}`,
+  addAlone: "/api/v1/group/alone/",
+  //группы
+  groupInfo: (id) => `/api/v1/group/info/${id}`,
   createGroup: "/api/v1/group/",
   joinGroup:"api/v1/group/",
-  addAlone: "/api/v1/group/alone/",
 }
 
 export default initPoints;

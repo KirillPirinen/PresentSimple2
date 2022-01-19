@@ -3,9 +3,13 @@ import initPoints from "../../config/endPoints";
 import customAxios from "../../axios/instance";
 import { clearModal } from "./modal.ac";
 
-export const getAllWishes = (user_id) => async (dispatch) => {
-  const {data, status} = await customAxios(initPoints.getPersonWishes(user_id))
+export const getAllWishes = (user_id, navigate) => async (dispatch) => {
+  try {
+    const {data, status} = await customAxios(initPoints.getPersonWishes(user_id))
     if(status === 200) dispatch({type: ALL_WISHES_PERSON, payload:data });
+  } catch (error) {
+    if (error.response.status === 303) navigate('/profile')
+  }
 };
 
 export const addAlone = wish_id => async dispatch => {

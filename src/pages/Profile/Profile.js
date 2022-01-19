@@ -7,6 +7,7 @@ import { getProfileData } from '../../redux/actions/profile.ac'
 import ArchiveWishesTab from './ArchiveWishesTab'
 import FormsTab from './FormsTab'
 import GiveTab from './GiveTab'
+import { GroupsTab } from './GroupsTab'
 import styles from './Profile.module.scss'
 import WishesTab from './WishesTab'
 
@@ -33,7 +34,7 @@ export const Profile = () => {
                 <WishesTab wishlist={Wishlist}/>
                 <GiveTab wishes={Wishes} presents={Presents}/>
                 <FormsTab forms={Forms}/>
-                <div>Таб 4</div>
+                <GroupsTab groups={Groups}/>
                 <ArchiveWishesTab wishlist={Wishlist}/>
             </TabsWrapper>
       </div>

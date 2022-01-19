@@ -1,0 +1,71 @@
+@import '../../components/common.scss';
+
+@mixin blockType {
+  border-radius: 2px;
+  background-color: white;
+  margin: 10px 20px;
+  min-height: 100%;
+  border: 2px solid #ddd;
+  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+.content {
+  @include content;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 60px;
+
+  .title {
+    flex-basis: 100%;
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+
+    & > div {
+      width: 70%;
+    }
+
+    h3 {
+      padding: 0 20px;
+      margin: 0;
+      text-align: left;
+    }
+  }
+  .infchat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 55%;
+    flex-grow: 2;
+  }
+
+  .info {
+    @include blockType;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 95%;
+
+    .customWish {
+      max-width: 70%;
+      flex-basis: 50%;
+      border: 1px solid black;
+    }
+  }
+
+  .users {
+    @include blockType;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    flex-grow: 3;
+    flex-shrink: 2;
+  }
+}

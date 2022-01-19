@@ -19,6 +19,7 @@ import { SentFormCheker } from "./pages/SentForm/SentFormChecker";
 import { FormContextProvider } from "./context/SentFormContext";
 import { Modal } from "./components/Modal/Modal";
 import { Profile } from "./pages/Profile/Profile";
+import { GroupPage } from "./pages/GroupPage/GroupPage";
 
 function App() {
   const user = useSelector(state=>state.user)
@@ -47,6 +48,7 @@ function App() {
             <Route path="search" element={<Search/>} />
             <Route path="newform" element={<NewForm/>} />
             <Route path="wishlist/:user_id" element={<Wishes/>} />
+            <Route path="group/:group_id" element={<GroupPage/>} />
             <Route path="filledform/:uuid" element={<FilledFormData/>} />
             <Route path="successCreated" element={<FormGenerated/>}/>
           </Route>

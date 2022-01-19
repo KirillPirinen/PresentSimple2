@@ -2,7 +2,7 @@ import customAxios from "../../axios/instance";
 import initPoints from "../../config/endPoints";
 
 import {
-  ADD_WISH, ALL_WISHES, DELETE_WISH, EDIT_WISH, WISH_IS_GIVEN, EDIT_ONLY_PHOTO, DELETE_FORM, UNBIND_PRESENT, GIVE_PRESENT,
+  ADD_WISH, ALL_WISHES, DELETE_WISH, EDIT_WISH, WISH_IS_GIVEN, EDIT_ONLY_PHOTO, DELETE_FORM, UNBIND_PRESENT, GIVE_PRESENT, GIVE_WISH, UNBIND_WISH,
 } from "../types/profileTypes"; 
 
 import { clearModal } from "./modal.ac";
@@ -57,8 +57,8 @@ export const deleteWish = id => async dispatch => {
     }
 }
 
-export const archiveWish = id => async dispatch => {
-    const {status} = await customAxios.patch(initPoints.archiveWish(id))
+export const toggleStatusWish = id => async dispatch => {
+    const {status} = await customAxios.patch(initPoints.toggleStatus(id))
     if(status === 200) {
       dispatch({
         type: WISH_IS_GIVEN,
@@ -95,6 +95,28 @@ export const givePresent = id => async dispatch => {
   if(status === 200) {
      dispatch({
       type: GIVE_PRESENT,
+      payload: id,
+    });
+    return dispatch(clearModal())
+  }
+}
+
+export const giveWish = id => async dispatch => {
+  const {status} = await customAxios.patch(initPoints.giveWish(id))
+  if(status === 200) {
+     dispatch({
+      type: GIVE_WISH,
+      payload: id,
+    });
+    return dispatch(clearModal())
+  }
+}
+
+export const unBindWish = id => async dispatch => {
+  const {status} = await customAxios.patch(initPoints.unbindWish(id))
+  if(status === 200) {
+     dispatch({
+      type: UNBIND_WISH,
       payload: id,
     });
     return dispatch(clearModal())
