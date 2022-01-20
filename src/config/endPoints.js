@@ -1,4 +1,5 @@
 export const host = "http://localhost:3001";
+export const wsserver = "ws://localhost:3001";
 
 const initPoints = {
   //Аутентификация
