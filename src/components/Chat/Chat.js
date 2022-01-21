@@ -1,26 +1,28 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { wsserver } from "../../config/endPoints";
+import { recieveMessage } from "../../redux/actions/chat.ac";
 import styles from "./Chat.module.scss";
 import { ChatMessage } from "./ChatMessage";
 
 export const Chat = () => {
-
-  const [isPaused, setPause] = useState(false);
+  const dispatch = useDispatch()
+  const {group_id} = useParams()
+  const {isPaused, messages, online} = useSelector(state=>state.chat)
   const ws = useRef(null);
-  const [messages, setMessages] = useState([])
+  console.log(online)
   const user = useSelector(state=>state.user)
 
   useEffect(() => {
-      ws.current = new WebSocket(wsserver);
-      ws.current.onopen = () => console.log("ws opened");
-      ws.current.onclose = () => console.log("ws closed");
+      ws.current = new WebSocket(wsserver + `?group=${group_id}`);
 
       const wsCurrent = ws.current;
 
       return () => {
           wsCurrent.close();
       };
+
   }, []);
 
   useEffect(() => {
@@ -28,23 +30,24 @@ export const Chat = () => {
 
       ws.current.onmessage = e => {
           if (isPaused) return;
-          const message = JSON.parse(e.data);
-          setMessages(prev => [...prev, message.payload])
+          dispatch(recieveMessage(e))
       };
 
   }, [isPaused]);
 
   const submitHandler = (e) => {
     e.preventDefault()
-    ws.current.send(JSON.stringify({type:'NEW_MESSAGE', payload:e.target.message.value}))
+    ws.current.send(JSON.stringify(
+      {type:'NEW_MESSAGE', payload:e.target.message.value}
+      ))
   }
-  console.log(messages)
+  
   return (
     <div className={styles.msger}>
     <div className={styles.head}></div>
     
     <div className={styles.chat}>
-      {messages.map(message => <ChatMessage message={message} right={message.id === user.id}/>)}
+      {messages.map(message => <ChatMessage key={message.id} message={message} right={message.user_id === user.id}/>)}
     </div>
 
     <form onSubmit={submitHandler} className={styles.inputarea}>

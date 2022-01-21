@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import chatReducer from "./chatReducer";
 import { createFormReducer } from "./createFormReducer";
 import groupPageReducer from "./groupPageReducer";
 import informerReducer from "./informerReducer";
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   modal:modalReducer,
   wishlist:wishesGroupAloneReducer,
   profile:profileReducer,
-  groupPage:groupPageReducer
+  groupPage:groupPageReducer,
+  chat:chatReducer,
 });
 
 export default rootReducer;

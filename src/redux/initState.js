@@ -9,7 +9,8 @@ const initState = {
   modal:{status:false},
   wishlist:{},
   profile:{},
-  groupPage:null
+  groupPage:null,
+  chat:{isPaused:false, messages:[], online:[]}
 };
 
 export default initState;

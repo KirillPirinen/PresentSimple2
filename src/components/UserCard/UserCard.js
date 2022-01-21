@@ -1,7 +1,12 @@
+import { useSelector } from 'react-redux';
+import chatReducer from '../../redux/reducers/chatReducer';
 import { Avatar } from '../Avatar/Avatar';
 import styles from './UserCard.module.scss';
 
 export const UserCard = ({user, label, ...rest}) => {
+
+  const isOnline = useSelector(state => state.chat.online.includes(user.id))
+  
   return (
     <div className={label ? styles.label : styles.card} {...rest}>
       <Avatar style={{width:'80px', height:'80px', margin:0}}/>
@@ -9,6 +14,7 @@ export const UserCard = ({user, label, ...rest}) => {
       <p>{user.name} {user.lname}</p>
       <p>{user.email}</p>
       </div>
+      {isOnline && <span className={styles.online}>online</span>}
     </div>
   )
 }
