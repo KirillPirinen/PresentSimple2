@@ -101,3 +101,13 @@
     }
   }
 }
+
+.personalTab {
+  @include blockType;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width:90%;
+  min-height: 300px;
+  padding: 20px;
+}

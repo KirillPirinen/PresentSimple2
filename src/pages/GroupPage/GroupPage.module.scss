@@ -1,14 +1,5 @@
 @import '../../components/common.scss';
 
-@mixin blockType {
-  border-radius: 2px;
-  background-color: white;
-  margin: 10px 20px;
-  min-height: 100%;
-  border: 2px solid #ddd;
-  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
-}
-
 .content {
   @include content;
   flex-direction: row;
@@ -67,5 +58,15 @@
     flex-basis: 25%;
     flex-grow: 3;
     flex-shrink: 2;
+  }
+
+  .groupMenu {
+    @include blockType;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    flex-grow: 3;
+    flex-shrink: 2;
+    padding: 5px;
   }
 }

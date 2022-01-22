@@ -3,6 +3,7 @@ import { clearModal } from "../../redux/actions/modal.ac"
 import styles from "./Modal.module.scss"
 import { AddWish } from "./ModalContentTypes/AddWish"
 import { DeleteForm } from "./ModalContentTypes/DeleteForm"
+import { EditGroup } from "./ModalContentTypes/EditGroup"
 import { PresentCard } from "./ModalContentTypes/PresentCard"
 import { RestoreWish } from "./ModalContentTypes/RestoreWish"
 import { UnbindPresent } from "./ModalContentTypes/UnBindPresent"
@@ -42,6 +43,10 @@ export const Modal = () => {
 
         {data?.hasOwnProperty('unBind') && (
           <UnbindPresent wish={data.unBind} cost={data.cost}/>
+        )}
+
+        {data?.hasOwnProperty('editGroup') && (
+          <EditGroup group={data.editGroup} toDelete={data.toDelete}/>
         )}
 
       </div>

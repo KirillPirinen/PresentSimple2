@@ -37,7 +37,7 @@ export const WishCard = ({wish, cost}) => {
           <MainSelect name="maxusers" maxNum={10} firstOpt="Количество участников"/>
           </label>
           <label>
-            <MainInput type="text" name="telegram" placeholder="Группа в Telegram"/>
+            <MainInput type="text" name="name" placeholder="Название группы"/>
           </label>
           <br/>
           <MainButton type="submit" text="Cоздать группу"/>
@@ -52,7 +52,7 @@ export const WishCard = ({wish, cost}) => {
   } else {
     return (
       <>
-        <h4>Забронировать подарок для {User?.name} {User?.lname}?</h4>
+        <h4>{wish.Group ? 'Вступить в группу для подарка ' : `Забронировать подарок для `}{User?.name} {User?.lname}?</h4>
         <Wish wish={wish} cost={cost} label={true}/>
         <div>
           {

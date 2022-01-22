@@ -1,4 +1,4 @@
-import { CHAT_CONNECT, CHAT_LEAVE, CHAT_ONLINE, NEW_MESSAGE, OPEN_CHAT, RECIEVE_MESSAGE } from "../types/chatTypes.js";
+import { CHAT_CLEAR, CHAT_CONNECT, CHAT_LEAVE, CHAT_ONLINE, NEW_MESSAGE, OPEN_CHAT, RECIEVE_MESSAGE } from "../types/chatTypes.js";
 
 const chatReducer = (state = {isPaused:false, messages:[], online:[]}, action) => {
 
@@ -16,6 +16,8 @@ const chatReducer = (state = {isPaused:false, messages:[], online:[]}, action) =
     case CHAT_LEAVE: 
       return {...state, online:state.online.filter(clientid => clientid !== action.payload)}
 
+    case CHAT_CLEAR: return {isPaused:false, messages:[], online:[]}
+    
     default:
       return state;
   }

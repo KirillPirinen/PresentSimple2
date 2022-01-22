@@ -13,6 +13,7 @@ export const deleteUser = () => ({
 
 export const signUp = (payload, navigate) => async (dispatch) => {
   try {
+    console.log(payload)
     const {status, data} = await customAxios.post(initPoints.signUp, payload)
     if(status === 200) {
       dispatch(setUser(data))

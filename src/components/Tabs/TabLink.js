@@ -1,10 +1,10 @@
 import { memo } from "react"
 import styles from "./Tabs.module.scss"
 
-const TabLink = ({active, text, id, ...rest}) => {
+const TabLink = ({active, text, id, icon, ...rest}) => {
   return (
     <div className={active ? styles.active : ''} {...rest}>
-        <i className="fa fa-code"></i>
+        <i className={`fa ${icon}`}></i>
       <span>{text}</span>
     </div>
   )

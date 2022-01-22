@@ -10,7 +10,7 @@ export const MainSelect = ({maxNum, firstOpt, ...rest}) => {
           Array.apply(null, Array(--maxNum)).map((_, index) => {
             const val = index + 2;
             return (
-              <option key={String(val)} value={val} selected>{val}</option>
+              <option key={String(val)} value={val}>{val}</option>
             )
           })
         }

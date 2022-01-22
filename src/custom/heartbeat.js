@@ -25,7 +25,7 @@ export default function createWebSocketConnection(endpoint) {
   ws.onmessage(ev => console.log('Websocket message', ev));
 
   // heartbeat will check connection is alive
-  setupWsHeartbeat(ws);
+  //setupWsHeartbeat(ws);
 
   return ws;
 }

@@ -4,7 +4,7 @@ import moment from 'moment'
 export const GroupCard = ({group, ...rest}) => {
   return (
     <div className={styles.groupCard} {...rest}>
-          <h4>{group.telegram}</h4>
+          <h4>{group.name}</h4>
             <p>
               Дата создания:<br/>
               <b>{moment(group.createdAt).format('ll')}</b>
