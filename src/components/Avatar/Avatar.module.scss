@@ -1,0 +1,41 @@
+.img {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  border: 5px solid #163A24;
+  margin-top: 20px;
+  box-shadow: 0 5px 20px #FEC200;
+  background-size: cover;
+  background-position: center center;
+}
+
+.file {
+  position: relative;
+  width: 160px;
+  &::after {
+    z-index: 100;
+    position: absolute;
+    top:120px;
+    left:20px;
+    border-radius: 10px;
+    content:'Изменить';
+    text-align: center;
+    display:block;
+    opacity: 0.5;
+    width: 110px;
+    padding: 5px;
+    background-color: white;
+    transition: all 0.4s;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover::after {
+    opacity: 0.9;
+  }
+  input {
+    display: none;
+  }
+}

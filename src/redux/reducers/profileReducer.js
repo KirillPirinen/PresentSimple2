@@ -10,6 +10,7 @@ import {
   GIVE_PRESENT,
   GIVE_WISH,
   UNBIND_WISH,
+  EDIT_USER_DATA,
 } from "../types/profileTypes";
 
 import produce from "immer"
@@ -92,6 +93,12 @@ function profileReducer(state = {}, action) {
          })
          draft.Presents.splice(index, 1)
        });
+     }
+
+     case EDIT_USER_DATA: {
+      return produce(state, draft=> {
+        return Object.assign(draft, action.payload)
+      });
      }
 
     default:

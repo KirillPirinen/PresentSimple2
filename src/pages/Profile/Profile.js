@@ -13,10 +13,9 @@ import WishesTab from './WishesTab'
 
 export const Profile = () => {
   const user = useSelector(state=>state.user)
-  const profile = useSelector(state=>state.profile)
-  const {Forms, Groups, Presents, Wishes, Wishlist, email, lname, phone, name, avatar} = profile;
+  const {Forms, Groups, Presents, Wishes, Wishlist, email, lname, phone, name, avatar} = useSelector(state=>state.profile)
   const dispatch = useDispatch()
-  console.log(profile)
+
   useEffect(()=> {
     dispatch(getProfileData())
   }, [dispatch])

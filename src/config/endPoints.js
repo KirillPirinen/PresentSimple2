@@ -35,7 +35,8 @@ const initPoints = {
   joinGroup:"api/v1/group/",
   deleteGroup: (id) => `api/v1/group/${id}`,
   editGroup: (id) => `api/v1/group/edit/${id}`,
-  leaveGroup:(id) => `api/v1/group/leave/${id}`
+  leaveGroup:(id) => `api/v1/group/leave/${id}`,
+  editUserData: '/api/v1/user'
 }
 
 export default initPoints;

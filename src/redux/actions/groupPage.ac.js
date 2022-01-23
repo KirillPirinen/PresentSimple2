@@ -27,6 +27,7 @@ export const editGroup = (id, payload) => async dispatch => {
   const {status} = await customAxios.patch(initPoints.editGroup(id), payload)
   if(status === 200) {
     dispatch({type:EDIT_GROUP, payload})
+    dispatch(clearModal())
   }
 }
 

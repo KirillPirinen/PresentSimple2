@@ -1,4 +1,4 @@
-import {DELETE_USER, SET_USER} from "../types/userTypes";
+import {DELETE_USER, EDIT_USER, SET_USER} from "../types/userTypes";
 import initPoints from "../../config/endPoints";
 import customAxios from "../../axios/instance";
 
@@ -7,13 +7,20 @@ export const setUser = (user) => ({
   payload: user,
 });
 
+export const editUser = (payload) => {
+  const res = {};
+  ['name', 'lname', 'avatar'].forEach(field => {
+    if(payload.hasOwnProperty(field)) res[field] = payload[field]
+  })
+  return {type:EDIT_USER, payload:res}
+};
+
 export const deleteUser = () => ({
   type: DELETE_USER,
 });
 
 export const signUp = (payload, navigate) => async (dispatch) => {
   try {
-    console.log(payload)
     const {status, data} = await customAxios.post(initPoints.signUp, payload)
     if(status === 200) {
       dispatch(setUser(data))

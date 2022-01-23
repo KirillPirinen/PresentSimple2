@@ -6,11 +6,13 @@ export const Loader = () => {
   return (
     <>
     {loader && (
+    <div className={styles.loaderWr}>
       <div className={`${styles.container} ${styles['animation-5']}`}>
-      <div className={`${styles.shape} ${styles.shape1}`}></div>
-      <div className={`${styles.shape} ${styles.shape2}`}></div>
-      <div className={`${styles.shape} ${styles.shape3}`}></div>
-      <div className={`${styles.shape} ${styles.shape4}`}></div>
+        <div className={`${styles.shape} ${styles.shape1}`}></div>
+        <div className={`${styles.shape} ${styles.shape2}`}></div>
+        <div className={`${styles.shape} ${styles.shape3}`}></div>
+        <div className={`${styles.shape} ${styles.shape4}`}></div>
+      </div>
     </div>
     )}
     </>

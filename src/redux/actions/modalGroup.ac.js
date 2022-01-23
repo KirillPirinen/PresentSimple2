@@ -28,10 +28,11 @@ export const addGroup = (payload, wish_id) => async (dispatch) => {
     } 
 };
 
-export const joinGroup = wish_id => async dispatch => {
+export const joinGroup = (wish_id, redirect) => async dispatch => {
    const {status} = await customAxios.patch(initPoints.joinGroup, {wish_id})
     if (status === 200) {
       dispatch({type:JOIN_GROUP, payload:wish_id})
+      redirect()
     }
     return dispatch(clearModal())
 };

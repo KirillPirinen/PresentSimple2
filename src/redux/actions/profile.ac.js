@@ -2,10 +2,11 @@ import customAxios from "../../axios/instance";
 import initPoints from "../../config/endPoints";
 
 import {
-  ADD_WISH, ALL_WISHES, DELETE_WISH, EDIT_WISH, WISH_IS_GIVEN, EDIT_ONLY_PHOTO, DELETE_FORM, UNBIND_PRESENT, GIVE_PRESENT, GIVE_WISH, UNBIND_WISH,
+  ADD_WISH, ALL_WISHES, DELETE_WISH, EDIT_WISH, WISH_IS_GIVEN, EDIT_ONLY_PHOTO, DELETE_FORM, UNBIND_PRESENT, GIVE_PRESENT, GIVE_WISH, UNBIND_WISH, EDIT_USER_DATA,
 } from "../types/profileTypes"; 
 
 import { clearModal } from "./modal.ac";
+import { editUser } from "./User.ac";
 
 export const getProfileData = () => async dispatch => {
     const {data, status} = await customAxios.get(initPoints.profileData)
@@ -120,5 +121,21 @@ export const unBindWish = id => async dispatch => {
       payload: id,
     });
     return dispatch(clearModal())
+  }
+}
+
+export const editUserData = payload => async dispatch => {
+  const {status} = await customAxios.patch(initPoints.editUserData, payload)
+  if(status === 200) {
+    dispatch(editUser(payload))
+    dispatch({type:EDIT_USER_DATA, payload})
+  }
+}
+
+export const editUserAvatar = payload => async dispatch => {
+  const {status, data} = await customAxios.patch(initPoints.editUserData, payload)
+  if(status === 200) {
+    dispatch(editUser(data))
+    dispatch({type:EDIT_USER_DATA, payload:data})
   }
 }

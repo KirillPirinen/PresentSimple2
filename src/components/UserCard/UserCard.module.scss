@@ -30,6 +30,10 @@
   order: 1;
   padding: 10px 5px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .online {

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { getFormData } from "../../../custom/getFormData"
 import { clearModal } from "../../../redux/actions/modal.ac"
 import { addAlone, addGroup, joinGroup } from "../../../redux/actions/modalGroup.ac"
@@ -16,9 +17,12 @@ import styles from '../Modal.module.scss'
 
 export const WishCard = ({wish, cost}) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {User} = useSelector(state=>state.wishlist)
   const [group, setGroup] = useState(false)
   const groupHandler = () => setGroup(prev=>!prev)
+
+  const groupGo = () => navigate('/group/' + wish.Group.id)
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -57,7 +61,7 @@ export const WishCard = ({wish, cost}) => {
         <div>
           {
             wish.Group ? (
-              <SimpleButton onClick={()=>dispatch(joinGroup(wish.id))} text="Вступить в группу"/>
+              <SimpleButton onClick={()=>dispatch(joinGroup(wish.id, groupGo))} text="Вступить в группу"/>
             ) : (
               <>
                 <MainButton onClick={() => dispatch(addAlone(wish.id))} text="Подарю сам"/>
