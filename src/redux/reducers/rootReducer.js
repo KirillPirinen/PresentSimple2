@@ -7,6 +7,7 @@ import loaderReducer from "./loaderReducer";
 import modalReducer from "./modalReducer";
 import { presentsReducer } from "./presentsReducer";
 import profileReducer from "./profileReducer";
+import resetReducer from "./resetReducer";
 import { searchReducer } from "./searchReducer";
 import { SentFormReducer } from "./SentFormReducer";
 import userReducer from "./userReducer";
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   profile:profileReducer,
   groupPage:groupPageReducer,
   chat:chatReducer,
+  resetPassword:resetReducer
 });
 
 export default rootReducer;

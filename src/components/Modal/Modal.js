@@ -5,6 +5,7 @@ import { AddWish } from "./ModalContentTypes/AddWish"
 import { DeleteForm } from "./ModalContentTypes/DeleteForm"
 import { EditGroup } from "./ModalContentTypes/EditGroup"
 import { PresentCard } from "./ModalContentTypes/PresentCard"
+import { RestorePassword } from "./ModalContentTypes/RestorePassword"
 import { RestoreWish } from "./ModalContentTypes/RestoreWish"
 import { UnbindPresent } from "./ModalContentTypes/UnBindPresent"
 import { WishCard } from "./ModalContentTypes/WishCard"
@@ -17,37 +18,37 @@ export const Modal = () => {
       <div className={signal ? `${styles.modal} ${styles.active}` : styles.modal} onClick={()=> dispatch(clearModal())}> 
       <div onClick={(e) => e.stopPropagation()} className={styles.content}>
 
-        {data?.hasOwnProperty('present') && (
-          <PresentCard wish={data.wish} cost={data.cost}/>
-        )}
+        {
+          data.hasOwnProperty('present') ? 
+          <PresentCard wish={data.wish} cost={data.cost}/> :
 
-        {data?.hasOwnProperty('wish') && (
-          <WishCard wish={data.wish} cost={data.cost}/>
-        )}
+          data.hasOwnProperty('wish') ?
+          <WishCard wish={data.wish} cost={data.cost}/> :
 
-        {data?.hasOwnProperty('addWish') && (
-          <AddWish wish={data?.wish}/>
-        )}
+          data.hasOwnProperty('addWish') ?
+          <AddWish wish={data?.wish}/> :
 
-        {data?.hasOwnProperty('editWish') && (
-          <AddWish editWish={data.editWish}/>
-        )}
+          data.hasOwnProperty('editWish') ?
+          <AddWish editWish={data.editWish}/> :
+          
+          data.hasOwnProperty('restoreWish') ? 
+          <RestoreWish restoreWish={data.restoreWish} cost={data.cost}/> :
 
-        {data?.hasOwnProperty('restoreWish') && (
-          <RestoreWish restoreWish={data.restoreWish} cost={data.cost}/>
-        )}
+          data.hasOwnProperty('deleteForm') ?
+          <DeleteForm form={data.deleteForm}/> :
 
-        {data?.hasOwnProperty('deleteForm') && (
-          <DeleteForm form={data.deleteForm}/>
-        )}
+          data.hasOwnProperty('unBind') ? 
+          <UnbindPresent wish={data.unBind} cost={data.cost}/> :
+          
+          data.hasOwnProperty('editGroup') ?
+          <EditGroup group={data.editGroup} toDelete={data.toDelete}/> :
+          
+          data.hasOwnProperty('restorePassword') ?
+          <RestorePassword/>
 
-        {data?.hasOwnProperty('unBind') && (
-          <UnbindPresent wish={data.unBind} cost={data.cost}/>
-        )}
+          : null
 
-        {data?.hasOwnProperty('editGroup') && (
-          <EditGroup group={data.editGroup} toDelete={data.toDelete}/>
-        )}
+        }
 
       </div>
       <h2 className={styles.clickhere}>Кликни что-бы выйти</h2>

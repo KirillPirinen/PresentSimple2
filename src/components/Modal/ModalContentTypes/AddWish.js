@@ -1,7 +1,5 @@
-import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { clearModal } from "../../../redux/actions/modal.ac"
-import { bindPresent } from "../../../redux/actions/presents.ac"
 import { addNewWish, toggleStatusWish, deleteWish, reloadWish } from "../../../redux/actions/profile.ac"
 import { MainButton } from "../../Buttons/MainButton"
 import { RefuseButton } from "../../Buttons/RefuseButton"
@@ -15,30 +13,15 @@ import styles from '../Modal.module.scss'
 export const AddWish = ({editWish}) => {
   const dispatch = useDispatch()
 
-  const [value, setValues] = useState(editWish || {title:'', description:'', price:''});
-  const [photo, setPhoto] = useState();
-  
-  const changeHandler = (e) => {
-    setValues(prev=> ({...prev, [e.target.name]:e.target.value}))
-  }
-
   const submitAction = (e) => {
     e.preventDefault();
     if (editWish?.id) {
-      const data = new FormData();
-      data.append('photo', photo);
-      data.append('title', value.title);
-      data.append('description', value.description);
-      data.append('price', value.price);
+      const data = new FormData(e.target);
       data.append('id', editWish.id);
       dispatch(reloadWish(data));
     } else {
-      const data = new FormData();
-      data.append('photo', photo);
-      data.append('title', value.title);
-      data.append('description', value.description);
-      data.append('price', value.price);
-      dispatch(addNewWish(data));
+      console.log(e)
+      dispatch(addNewWish(new FormData(e.target)));
     }
   };
 
@@ -61,28 +44,21 @@ export const AddWish = ({editWish}) => {
         <form onSubmit={submitAction} className={styles.addForm}>
               <MainInput 
                 name='title' 
-                onChange={changeHandler}
                 type="text"
-                placeholder="Желаемый подарок"
-                value={value.title}
+                placeholder={editWish?.title || "Желаемый подарок"}
               />
               <MainInput
                 name='price'
-                onChange={changeHandler}
                 type="number"
                 placeholder={editWish?.cost || "Примерная стоимость"}
-                value={value.price}
                 />
               <MainTextArea
                 name='description' 
-                onChange={changeHandler}
                 type="text"
-                placeholder="Описание/ссылка"
-                value={value.description}
+                placeholder={editWish?.description || "Описание/ссылка"}
                 />
               <MainInput
                 name="photo"
-                onChange={(e) => setPhoto(e.target.files[0])}
                 type="file"
                 />
               <br/>
@@ -100,5 +76,4 @@ export const AddWish = ({editWish}) => {
     )
   }
 
-  
 }

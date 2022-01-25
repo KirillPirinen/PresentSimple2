@@ -4,6 +4,7 @@ $color-primary: currentColor;
 .mainLink {
     text-decoration: none;
     color: $color-primary;
+    cursor: pointer;
 }
 
 .underline {

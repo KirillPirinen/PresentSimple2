@@ -6,11 +6,12 @@ const initState = {
   createForm:{},
   sentForm: {},
   presents:[],
-  modal:{status:false},
+  modal:{status:false, data:{}},
   wishlist:{},
   profile:{},
   groupPage:null,
-  chat:{isPaused:false, messages:[], online:[]}
+  chat:{isPaused:false, messages:[], online:[]},
+  resetPassword:null
 };
 
 export default initState;

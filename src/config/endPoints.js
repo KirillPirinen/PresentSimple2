@@ -9,7 +9,8 @@ const initPoints = {
   googleIn:"/api/v1/auth/google",
   checkAuth:"/api/v1/auth/check",
   checkEmail:"/api/v1/auth/checkemail",
-  resetPassword:"/api/v1/auth/resetpassword/",
+  checkLink: (uuid) => `/api/v1/auth/resetpassword/${uuid}`,
+  resetPassword: `/api/v1/auth/resetpassword/`,
   //Юзеры, Анкеты
   createForm: "/api/v1/form/",
   deleteForm: (uuid) => `/api/v1/form/${uuid}`,

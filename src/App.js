@@ -20,6 +20,7 @@ import { FormContextProvider } from "./context/SentFormContext";
 import { Modal } from "./components/Modal/Modal";
 import { Profile } from "./pages/Profile/Profile";
 import { GroupPage } from "./pages/GroupPage/GroupPage";
+import { CheckLink } from "./pages/ResetPassword/CheckLink";
 
 function App() {
   const user = useSelector(state=>state.user)
@@ -40,7 +41,9 @@ function App() {
             <Route path="login" element={<Login/>} />
             <Route path="signup" element={<SignUp/>} />
           </Route>
-
+          
+          <Route path="resetPassword/:uuid" element={<CheckLink/>}/>
+          
           <Route path="sentform/:uuid" element={<FormContextProvider><SentFormCheker/></FormContextProvider>}/>
 
           <Route element={<RequireAuth />}>

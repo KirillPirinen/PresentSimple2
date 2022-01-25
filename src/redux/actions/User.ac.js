@@ -1,6 +1,7 @@
 import {DELETE_USER, EDIT_USER, SET_USER} from "../types/userTypes";
 import initPoints from "../../config/endPoints";
 import customAxios from "../../axios/instance";
+import { clearModal } from "./modal.ac";
 
 export const setUser = (user) => ({
   type: SET_USER,
@@ -60,33 +61,12 @@ export const checkAuth = () => async (dispatch) => {
   if(status === 200) dispatch(setUser(data));
 };
 
-// export const checkEmail = (email) => async (dispatch) => {
-//   const {status, data} = await customFetch(dispatch, initPoints.checkEmail, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     credentials: "include",
-//     body: JSON.stringify({ email: email }),
-//   });
-//   if (status === 200) {
-//     dispatch(getError(data.message));
-//   }
-// };
-
-// export const resetPasswordAction =
-//   (payload, history, reset_password_id) => async (dispatch) => {
-//     dispatch(enableLoader());
-//     const {status, data} = await customFetch(dispatch, initPoints.resetPassword + String(reset_password_id),
-//       {method: "POST",
-//        headers: {"Content-Type": "application/json"},
-//        credentials: "include",
-//        body: JSON.stringify(payload)
-//       }
-//     );
-//     if (status === 200) {
-//       dispatch(getInfo(data.info));
-//     }
-//   };
-
+export const checkEmail = payload => async (dispatch) => {
+  try{
+    await customAxios.post(initPoints.checkEmail, payload);
+    dispatch(clearModal())
+  } catch {
+    dispatch(clearModal())
+  } 
+};
   

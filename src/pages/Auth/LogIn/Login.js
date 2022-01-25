@@ -3,6 +3,7 @@ import { MainInput } from '../../../components/Inputs/MainInput'
 import styles from '../Auth.module.scss'
 import { GoogleButton } from '../../../components/Buttons/GoogleButton'
 import { useOutletContext } from 'react-router-dom'
+import {ImitationLink} from '../../../components/Links/ImitationLink'
 
 export const Login = () => {
   const utils = useOutletContext()
@@ -32,6 +33,8 @@ export const Login = () => {
           /> 
 
         </div>
+        <br/>
+        <ImitationLink onClick={utils.forgetPassword} href="/restore" text="Забыл пароль"/>
       </form>
     </div>
   )

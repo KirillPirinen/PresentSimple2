@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { getFormData } from "../../custom/getFormData"
+import { setInformer } from "../../redux/actions/Informer.ac"
+import { setModal } from "../../redux/actions/modal.ac"
 import { googleIn, signIn, signUp } from "../../redux/actions/User.ac"
 import styles from './Auth.module.scss'
 
@@ -16,16 +18,19 @@ export const Auth = () => {
       e.preventDefault()
       dispatch(signUp(getFormData(e.target), navigate))
     },
+    forgetPassword: (e) => {
+      e.preventDefault()
+      dispatch(setModal({restorePassword:true}))
+    },
     signInSubmit: (e) => {
       e.preventDefault()
       dispatch(signIn(getFormData(e.target), redirectHandler))
     },
     onSuccess: (res) => {
       dispatch(googleIn({token:res?.tokenId}, redirectHandler))
-      console.log(res)
      },
     onFailure: (err) => {
-     console.log(err)
+     dispatch(setInformer({error:err}))
     }
   }
 
