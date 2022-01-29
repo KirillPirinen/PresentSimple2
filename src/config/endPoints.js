@@ -1,7 +1,5 @@
-// export const host = "http://localhost:3001";
-// export const wsserver = "ws://localhost:3001";
-export const host = `https://presentsimple.online`
-export const wsserver = `wss://presentsimple.online`
+export const host = process.env.NODE_ENV !== 'production' ? "http://localhost:3001" : `https://presentsimple.online`;
+export const wsserver = process.env.NODE_ENV !== 'production' ? "ws://localhost:3001" : "wss://localhost:3001";
 
 const initPoints = {
   //Аутентификация

@@ -29,7 +29,7 @@ export const Login = () => {
 
           <GoogleButton
             onSuccess={utils.onSuccess}
-            onFailure={utils.onSuccess}  
+            onFailure={utils.onFailure}  
           /> 
 
         </div>

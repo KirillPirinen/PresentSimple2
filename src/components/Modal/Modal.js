@@ -20,7 +20,7 @@ export const Modal = () => {
 
         {
           data.hasOwnProperty('present') ? 
-          <PresentCard wish={data.wish} cost={data.cost}/> :
+          <PresentCard wish={data.present} cost={data.cost}/> :
 
           data.hasOwnProperty('wish') ?
           <WishCard wish={data.wish} cost={data.cost}/> :

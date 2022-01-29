@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { clearModal } from "../../../redux/actions/modal.ac"
 import { bindPresent } from "../../../redux/actions/presents.ac"
 import { MainButton } from "../../Buttons/MainButton"

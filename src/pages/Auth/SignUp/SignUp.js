@@ -28,7 +28,7 @@ export const SignUp = () => {
         <div>
         <GoogleButton
             onSuccess={utils.onSuccess}
-            onFailure={utils.onSuccess}  
+            onFailure={utils.onFailure}  
           /> 
         </div>
       </form>

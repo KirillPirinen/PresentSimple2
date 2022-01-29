@@ -30,7 +30,7 @@ export const Auth = () => {
       dispatch(googleIn({token:res?.tokenId}, redirectHandler))
      },
     onFailure: (err) => {
-     dispatch(setInformer({error:err}))
+     dispatch(setInformer({error:'Ошибка авторизации'}))
     }
   }
 
