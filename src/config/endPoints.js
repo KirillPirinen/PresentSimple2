@@ -1,5 +1,7 @@
-export const host = "http://localhost:3001";
-export const wsserver = "ws://localhost:3001";
+// export const host = "http://localhost:3001";
+// export const wsserver = "ws://localhost:3001";
+export const host = `https://presentsimple.online`
+export const wsserver = `ws://presentsimple.online`
 
 const initPoints = {
   //Аутентификация
