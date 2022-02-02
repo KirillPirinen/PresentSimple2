@@ -10,9 +10,9 @@ export const Informer = () => {
   const location = useLocation()
 
   useEffect(() => {
-    const timeout = setTimeout(() => dispatch(clearInformer()), 5000)
+   const timeout = setTimeout(() => dispatch(clearInformer()), 5000)
     return () => clearTimeout(timeout)
-  })
+   })
 
   useEffect(()=>{
     if (informer.status) dispatch(clearInformer())

@@ -1,19 +1,24 @@
 @import '../../components/common.scss';
+@import '../../components/Media.scss';
 
 .content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   .textContent {
-    width: 45%;
+    flex-basis: 45%;
+    min-width: 300px;
+    flex-grow: 2;
   }
 
   .image {
     align-self: flex-end;
     object-fit: contain;
     max-width: 50%;
-    width: 50%;
+    flex-basis: 50%;
+    flex-grow: 2;
     height: auto;
   }
 }

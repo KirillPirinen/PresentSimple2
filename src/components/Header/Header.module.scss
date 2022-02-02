@@ -1,6 +1,9 @@
+@import '../Media.scss';
+
 .container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 5%;
@@ -13,6 +16,12 @@
   align-items: center;
   a {
     margin: 0 20px;
+  }
+  @include phone {
+    flex-direction: column;
+    & a {
+      margin-top: 10px;
+    }
   }
 }
 

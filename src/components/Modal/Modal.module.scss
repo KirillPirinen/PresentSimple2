@@ -1,8 +1,9 @@
 @import '../common.scss';
+@import '../Media.scss';
 
 .modal {
   min-height: 100%;
-  min-width: 100%;
+  width: 100%;
   background-color: rgba(28, 31, 29, 0.6);
   top:0;
   left: 0;
@@ -26,6 +27,12 @@
 }
 
 .content {
+  @include phone {
+    max-width: 100%;
+    & > * {
+      max-width: 100%;
+    }
+  }
   display: flex;
   padding: 15px;
   flex-direction: column;
@@ -53,15 +60,15 @@
 @keyframes clickhere {
   0% {
     opacity: 0.5;
-    bottom: 10%;
+    bottom: 5%;
   }
   50% {
     opacity: 2;
-    bottom: 20%;
+    bottom: 10%;
   }
   100% {
     opacity: 0.5;
-    bottom: 10%;
+    bottom: 5%;
   }
 }
 

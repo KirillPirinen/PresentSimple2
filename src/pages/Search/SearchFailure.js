@@ -27,7 +27,6 @@ export const SearchFailure = ({payload}) => {
         <p>Когда он её заполнит, список его желаний станет доступен и все желающие узнают, что дарить. Также вы получите уведомление о заполнении на электронную почту, указанную Вами при регистрации.</p>
         <p>Следить за статусом, можно дополнительно в Вашем профиле.</p>
       </div>
-      <div>
         <form onSubmit={submitHandler} className={styles.forms} onChange={changeHandler}>
           <MainInput type="text" placeholder="имя" name="name" defaultValue={inputs.name}/>
           <MainInput type="text" placeholder="фамилия" name="lname" defaultValue={inputs.lname}/>
@@ -36,7 +35,6 @@ export const SearchFailure = ({payload}) => {
           <br/>
           <SimpleButton text="Создать анкету"/>
         </form>
-      </div>
     </>
   )
 }
