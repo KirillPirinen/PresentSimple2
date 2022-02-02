@@ -1,3 +1,5 @@
+@import '../Media.scss';
+
 @keyframes entering {
   0% {
     right: -100%;
@@ -40,6 +42,10 @@
   margin-left:.2em;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  }
+  @include phone {
+    opacity: 1;
+    user-zoom: fixed;
   }
 }
 

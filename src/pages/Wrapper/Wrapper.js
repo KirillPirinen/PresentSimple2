@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
-import styles from './Wrapper.module.css'
+import styles from './Wrapper.module.scss'
 
 export const Wrapper = () => {
   return (

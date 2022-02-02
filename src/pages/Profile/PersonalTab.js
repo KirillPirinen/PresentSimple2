@@ -58,7 +58,7 @@ export const PersonalTab = ({user:{email, lname, phone, name, avatar}}) => {
       <img src={char}className={styles.char}/>
     </div>
       <div className={styles.personalTab}>
-        <div>
+        <div className={styles.editAvatar}>
           <h4>Почта: {email}</h4>
           <EditAvatar src={avatar} gender="male" onChange={avatarHandler}/>
         </div>

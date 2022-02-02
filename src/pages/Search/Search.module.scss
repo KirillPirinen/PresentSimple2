@@ -1,4 +1,5 @@
 @import '../../components/common.scss';
+@import '../../components/Media.scss';
 
 .content {
   @include content;
@@ -6,7 +7,15 @@
   justify-content: space-evenly;
 
   & > div {
-   width: 45%;
+   flex-basis: 45%;
+   flex-grow: 2;
+   min-width: 400px;
+
+   @include phone {
+    min-width: 200px;
+    flex-basis: 100%;
+   }
+
    ul, ol {
      text-align:left;
     li {
@@ -20,6 +29,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+   min-width: 400px;
    width: 45%;
    min-height: 400px;
    background: url('../../Search.png') center top no-repeat;

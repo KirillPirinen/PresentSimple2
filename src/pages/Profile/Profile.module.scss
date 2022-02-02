@@ -1,5 +1,6 @@
 @import '../../components/common.scss';
 @import '../../components/FormCard/Forms.module.scss';
+@import '../../components/Media.scss';
 
 @mixin wishWrap {
   display: flex;
@@ -27,6 +28,9 @@
 .wishTab {
   background-color: #F2EFE6;
   width: 100%;
+  @include tablet {
+    padding-top: 50px;
+  }
   .wishes {
     @include wishWrap;
     width: 100%;
@@ -103,9 +107,8 @@
 }
 
 .char {
-  width: 200px;
+  width: 190px;
   align-self: flex-start;
-  margin-left: 10%;
 }
 
 .personalTab {
@@ -114,8 +117,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  width:90%;
+  justify-content: space-evenly;
   padding: 20px;
 
   input {
@@ -125,9 +127,6 @@
   form {
     display: flex;
     flex-direction: column;
-    // input[type=file] {
-    //   visibility: hidden;
-    // }
   }
 }
 
@@ -136,4 +135,25 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  img {
+    margin-right: 30px;
+  }
+  @include phone {
+    & img {
+      width: 120px;
+    }
+    & h3 {
+      font-size: 1.4em;
+      margin: 0;
+      width: 200px;
+    }
+  }
+}
+
+.editAvatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
 }
