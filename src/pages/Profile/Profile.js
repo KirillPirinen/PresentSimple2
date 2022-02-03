@@ -32,7 +32,7 @@ export const Profile = () => {
   return (
     <>
       <div className={styles.info}>
-        <Avatar src={avatar} gender="male"/>
+        <Avatar src={avatar}/>
         <h3>{user.name || name} {user.lname || lname}</h3>
       </div>
       <div className={styles.content}>

@@ -12,8 +12,8 @@
   background-color: #F2EFE6;
   color: black;
   box-shadow: rgb(22, 58, 36) 0px 0px 0px 3px, #00853A 0px 0px 0px 9px, rgb(22, 58, 36) 0px 0px 0px 12px, #FFC99C 0px 0px 0px 15px;
-  @include phone {
-    & > * {
+  @include tablet {
+    & * {
       max-width: 100%;
     }
   }

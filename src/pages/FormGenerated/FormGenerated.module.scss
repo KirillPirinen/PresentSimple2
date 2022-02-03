@@ -3,6 +3,7 @@
 .content {
   @include content;
   .linkwrapper {
+    word-break: break-all;
     padding: 12px;
     background:white;
     border:2px solid transparentize($color: rgb(31, 97, 31), $amount: 0.5);

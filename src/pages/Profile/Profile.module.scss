@@ -114,11 +114,13 @@
 
 .personalTab {
   @include blockType;
-  @include phone {
+  width: 95%;
+  @include tablet {
+    width: 100%;
     margin: 0;
-    padding-bottom: 10px;
-    max-width:100%;
+    padding-bottom: 40px;
   }
+
   margin-top: 0;
   display: flex;
   flex-direction: row;
@@ -132,7 +134,11 @@
   form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 30%;
+    flex-grow: 3;
+    margin: 10px;
   }
 }
 
@@ -145,7 +151,7 @@
   img {
     margin-right: 30px;
   }
-  @include phone {
+  @include tablet {
     & img {
       display: none;
       width: 80px;
