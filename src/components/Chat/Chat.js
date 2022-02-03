@@ -46,7 +46,7 @@ export const Chat = () => {
     </div>
 
     <form onSubmit={submitHandler} className={styles.inputarea}>
-      <input type="text" name="message" placeholder="Enter your message..."/>
+      <input type="text" name="message" placeholder="Введите сообщение"/>
       <button type="submit">Отправить</button>
     </form>
   </div>

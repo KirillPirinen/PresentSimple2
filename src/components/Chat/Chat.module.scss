@@ -1,3 +1,5 @@
+@import '../Media.scss';
+
 $msger-bg:#fff;
 $border:2px solid #ddd;
 $leftmsg:#ececec;
@@ -99,6 +101,9 @@ $theme:rgb(22, 58, 36);
 }
 
 .inputarea {
+  @include phone {
+    flex-wrap: wrap;
+  }
   display: flex;
   padding: 10px;
   border-top: $border;
@@ -110,11 +115,15 @@ $theme:rgb(22, 58, 36);
   font-size: 1em;
   }
   input {
-    flex: 1;
+  flex: 1;
   background: white;
   }
   button {
-    margin-left: 10px;
+  @include phone {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+  margin-left: 10px;
   background: #198C36;
   color: #fff;
   font-weight: bold;
