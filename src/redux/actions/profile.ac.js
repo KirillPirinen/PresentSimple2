@@ -4,6 +4,7 @@ import initPoints from "../../config/endPoints";
 import {
   ADD_WISH, ALL_WISHES, DELETE_WISH, EDIT_WISH, WISH_IS_GIVEN, EDIT_ONLY_PHOTO, DELETE_FORM, UNBIND_PRESENT, GIVE_PRESENT, GIVE_WISH, UNBIND_WISH, EDIT_USER_DATA,
 } from "../types/profileTypes"; 
+import { setInformer } from "./Informer.ac";
 
 import { clearModal } from "./modal.ac";
 import { editUser } from "./User.ac";
@@ -31,7 +32,8 @@ export const addNewWish = payload => async dispatch => {
 
 
 export const reloadWish = payload => async dispatch => {
-    const {status, data} = await customAxios.put(initPoints.addWish, payload)
+    try {
+      const {status, data} = await customAxios.put(initPoints.addWish, payload)
     if(status === 200) {
       dispatch({
         type: EDIT_WISH,
@@ -44,6 +46,11 @@ export const reloadWish = payload => async dispatch => {
         payload:data
       })
       return dispatch(clearModal())
+    }
+    } catch (err) {
+      if(err.response.status === 413) {
+        dispatch(setInformer({error:'Максимальный размер файла 5мб'}))
+      }
     }
 }
 
@@ -133,9 +140,15 @@ export const editUserData = payload => async dispatch => {
 }
 
 export const editUserAvatar = payload => async dispatch => {
-  const {status, data} = await customAxios.patch(initPoints.editUserData, payload)
-  if(status === 200) {
-    dispatch(editUser(data))
-    dispatch({type:EDIT_USER_DATA, payload:data})
+  try{
+    const {status, data} = await customAxios.patch(initPoints.editUserData, payload)
+    if(status === 200) {
+      dispatch(editUser(data))
+      dispatch({type:EDIT_USER_DATA, payload:data})
+    }
+  } catch (err) {
+    if(err.response.status === 413) {
+      dispatch(setInformer({error:'Максимальный размер файла 5мб'}))
+    }
   }
 }
