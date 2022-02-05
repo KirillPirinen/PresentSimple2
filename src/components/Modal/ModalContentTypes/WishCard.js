@@ -38,8 +38,10 @@ export const WishCard = ({wish, cost}) => {
         <form onSubmit={submitHandler} className={styles.group}>
           <label>
             Выберите количество участников в группе
+            <br/>
           <MainSelect name="maxusers" maxNum={10} firstOpt="Количество участников"/>
           </label>
+          <br/>
           <label>
             <MainInput type="text" name="name" placeholder="Название группы"/>
           </label>

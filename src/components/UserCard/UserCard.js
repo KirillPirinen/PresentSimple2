@@ -8,7 +8,7 @@ export const UserCard = ({user, label, isAdmin, ...rest}) => {
 
   return (
     <div className={label ? styles.label : styles.card} {...rest}>
-      <Avatar style={{width:'80px', height:'80px', margin:0}}/>
+      <Avatar src={user.avatar} style={{width:'80px', height:'80px', margin:0}}/>
       <div>
       <p>{user.name} {user.lname}</p>
       <p>{user.email}</p>
