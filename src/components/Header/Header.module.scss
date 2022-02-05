@@ -4,9 +4,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  margin-top: 5%;
+  margin-top: 10px;
 }
 
 .loginPanel {
@@ -27,7 +27,10 @@
 
 .logo {
   display: block;
+  max-width: 350px;
+  text-align: center;
+  margin-bottom: 15px;
   img {
-    width: 150px;
+    width: 100%;
   }
 }
