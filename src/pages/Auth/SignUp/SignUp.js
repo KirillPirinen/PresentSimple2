@@ -19,10 +19,11 @@ export const SignUp = () => {
       <form onSubmit={utils.signUpSubmit}>
         <MainInput name="name" type="text" placeholder="Имя" required/>
         <MainInput name="lname" type="text" placeholder="Фамилия" required/>
-        <MainInput name="phone" type="phone" placeholder="Телефон"/>
         <MainInput name="email" type="email" placeholder="Ваш email" required/>
         <MainInput name="password" type="password" placeholder="Пароль" required/>
         <MainInput name="password2" type="password" placeholder="Повторите пароль" required/>
+        <p>Не все могут знать вашу почту, поэтому рекомендуем указать телефон. По нему Вас легко найдут ваши друзья.</p>
+        <MainInput name="phone" type="phone" placeholder="Телефон"/>
         <br/>
         <SimpleButton text={'Присоединиться'}/>
         <div>
