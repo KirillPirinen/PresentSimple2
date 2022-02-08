@@ -114,13 +114,12 @@
 
 .personalTab {
   @include blockType;
-  width: 95%;
   @include tablet {
     width: 100%;
     margin: 0;
     padding-bottom: 40px;
   }
-
+  width: 95%;
   margin-top: 0;
   display: flex;
   flex-direction: row;
@@ -165,5 +164,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 15px 0;
+  margin: 15px 10px;
+  flex-grow: 2;
 }
