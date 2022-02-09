@@ -22,9 +22,8 @@ export const deleteUser = () => ({
 
 export const signUp = (payload, navigate) => async (dispatch) => {
   try {
-    const {status, data} = await customAxios.post(initPoints.signUp, payload)
+    const {status} = await customAxios.post(initPoints.signUp, payload)
     if(status === 200) {
-      dispatch(setUser(data))
       navigate('/')
     }
   } catch (err) {
@@ -33,6 +32,14 @@ export const signUp = (payload, navigate) => async (dispatch) => {
     }
   }
   
+};
+
+export const activate = (uuid) => async (dispatch) => {
+  console.log('Здеся')
+  const {status, data} = await customAxios.get(initPoints.activate(uuid))
+  if(status === 200) {
+    dispatch(setUser(data))
+  }
 };
 
 export const signIn = (payload, navigate) => async (dispatch) => {

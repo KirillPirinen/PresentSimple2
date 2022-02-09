@@ -21,12 +21,13 @@ import { Modal } from "./components/Modal/Modal";
 import { Profile } from "./pages/Profile/Profile";
 import { GroupPage } from "./pages/GroupPage/GroupPage";
 import { CheckLink } from "./pages/ResetPassword/CheckLink";
+import { Activate } from "./pages/Activate/Activate";
 
 function App() {
   const user = useSelector(state=>state.user)
 
   useEffect(()=> {
-    window.localStorage.setItem('user', JSON.stringify(user))
+    if(user?.name) window.localStorage.setItem('user', JSON.stringify(user))
   }, [user])
 
   return (
@@ -43,7 +44,7 @@ function App() {
           </Route>
           
           <Route path="resetPassword/:uuid" element={<CheckLink/>}/>
-          
+          <Route path="activation/:uuid" element={<Activate/>}/>
           <Route path="sentform/:uuid" element={<FormContextProvider><SentFormCheker/></FormContextProvider>}/>
 
           <Route element={<RequireAuth />}>

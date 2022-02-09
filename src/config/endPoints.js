@@ -4,6 +4,7 @@ export const wsserver = process.env.NODE_ENV !== 'production' ? "ws://localhost:
 const initPoints = {
   //Аутентификация
   signUp:"/api/v1/auth/signup",
+  activate:(uuid) => `/api/v1/auth/activation/${uuid}`,
   signIn:"/api/v1/auth/signin",
   signOut:"/api/v1/auth/signout",
   googleIn:"/api/v1/auth/google",
