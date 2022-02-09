@@ -8,11 +8,10 @@ import { getCostByRange } from '../../custom/getCostByRange';
 import { setModal } from '../../redux/actions/modal.ac';
 import styles from './Profile.module.scss';
 
-const ArchiveWishesTab = ({wishlist}) => {
+const ArchiveWishesTab = ({wishlist = {}}) => {
   const dispatch = useDispatch()
 
-  return !wishlist ? <Loader/> : 
-      (
+  return (
       <div className={styles.wishTab}>
         <h3>Подаренные подарки</h3>
         <p>Вы можете повторно добавить эти подарки в свой список при необходимости или удалить навсегда.</p>
@@ -31,7 +30,7 @@ const ArchiveWishesTab = ({wishlist}) => {
           }, [])
           }
         </div>
-        <HrText text={wishlist.Wishes.length ? `Список того, что уже подарено ` : 'Список пуст'}/>
+        <HrText text={wishlist.Wishes?.length ? `Список того, что уже подарено ` : 'Список пуст'}/>
       </div>
       )
 }

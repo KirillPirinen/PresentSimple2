@@ -7,6 +7,9 @@
   top:0;
   left: 0;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 //Colors Variables
 $primary: #5C6BC0; // blue
@@ -38,11 +41,8 @@ $shapeDimentions: 10px;
 }
 
 .container {
-  top: calc(50% - 40px);
-  left: calc(50% - 40px);
   width: $containerDimentions;
   height: $containerDimentions;
-  position: absolute;
 
   &.animation-5 {
     transform: rotate(45deg);

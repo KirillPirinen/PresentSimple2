@@ -1,27 +1,20 @@
-import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { PlusButton } from '../../components/Buttons/PlusButton';
-import { SimpleButton } from '../../components/Buttons/SimpleButton';
 import { HrText } from '../../components/Dividers/HrText';
-import { FormCard } from '../../components/FormCard/FormCard';
-import { Loader } from '../../components/Loader/Loader';
 import { Wish } from '../../components/Wish/Wish';
 import { getCostByRange } from '../../custom/getCostByRange';
 import { setModal } from '../../redux/actions/modal.ac';
 import styles from './Profile.module.scss';
 
-const GiveTab = ({wishes, presents}) => {
+const GiveTab = ({wishes = [], presents = []}) => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
-  return (!wishes || !presents) ? <Loader/> : 
-      (<>
+  return (
+      <>
         <HrText/>
         <h4>Подарки из списков зарегистрированных пользователей: {wishes.length}</h4>
         <HrText/>
         <div className={styles.wishContainer}>
-        {wishes?.map(wish => {
+        {wishes.map(wish => {
             const cost = getCostByRange(wish.pricerange_id)
             return (
             <div 
@@ -43,7 +36,7 @@ const GiveTab = ({wishes, presents}) => {
         <h4>Подарки из анкет: {presents.length}</h4>
         <HrText/>
         <div className={styles.wishContainer}>
-          {presents?.map(present => {
+          {presents.map(present => {
             const cost = getCostByRange(present.pricerange_id)
             return (
               <div className={styles.wishWrap}

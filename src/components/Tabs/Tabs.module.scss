@@ -1,7 +1,7 @@
 
 .container {
 	width: auto;
-  top:-55px;
+  top:-65px;
   left: 50%;
   transform: translate(-50%, 0);
 	position: absolute;
@@ -10,12 +10,12 @@
 
   & > div {
     width: auto;
-    min-width: 70px;
+    min-width: 75px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     display: block;
-    height: 55px;
-    padding: 0.8em 0.4em;
+    height: 65px;
+    padding: 0.7em 0.5em;
     margin:0 1px;
     color: #757575;
     cursor: pointer;
@@ -24,6 +24,12 @@
     background: rgb(172, 190, 172);
     border-radius: 10px 10px 0 0;
     transition: all 0.2s;
+    span {
+      width: 100%;
+    }
+    i {
+      padding: 0 5px;
+    }
   }
 
   .active {
@@ -32,8 +38,6 @@
   }
 }
 
-
-/*Media query*/
 @media only screen and (max-width: 900px) {
   .container {
     top:-40px;

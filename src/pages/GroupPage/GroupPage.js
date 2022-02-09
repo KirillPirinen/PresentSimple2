@@ -15,7 +15,7 @@ import { getGroupInfo, leaveGroup } from '../../redux/actions/groupPage.ac';
 import { setModal } from '../../redux/actions/modal.ac';
 import styles from './GroupPage.module.scss';
 
-export const GroupPage = () => {
+const GroupPage = () => {
 
   const {group_id} = useParams()
   const navigate = useNavigate()
@@ -83,3 +83,5 @@ export const GroupPage = () => {
     </div>
     ) : <Loader/>
 }
+
+export default GroupPage

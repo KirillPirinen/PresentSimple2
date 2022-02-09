@@ -5,6 +5,7 @@ const TabLink = ({active, text, id, icon, ...rest}) => {
   return (
     <div className={active ? styles.active : null} {...rest}>
         <i className={`fa ${icon}`}></i>
+        <br/>
       <span>{text}</span>
     </div>
   )

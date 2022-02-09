@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { SimpleButton } from '../../components/Buttons/SimpleButton'
 import { MainInput } from '../../components/Inputs/MainInput'
 import { makeNewForm } from '../../redux/actions/createForm.ac'
