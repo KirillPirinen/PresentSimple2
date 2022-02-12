@@ -1,13 +1,10 @@
 import moment from "moment"
 import { useDispatch } from "react-redux"
 import { clearModal } from "../../../redux/actions/modal.ac"
-import { bindPresent } from "../../../redux/actions/presents.ac"
-import { archiveWish, deleteForm, deleteWish } from "../../../redux/actions/profile.ac"
-import { MainButton } from "../../Buttons/MainButton"
+import { deleteForm } from "../../../redux/actions/profile.ac"
 import { RefuseButton } from "../../Buttons/RefuseButton"
 import { HrText } from "../../Dividers/HrText"
 import { InfoText } from "../../Typography/InfoText"
-import { Wish } from "../../Wish/Wish"
 
 export const DeleteForm = ({form}) => {
   const dispatch = useDispatch()

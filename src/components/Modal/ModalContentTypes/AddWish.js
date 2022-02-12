@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { clearModal } from "../../../redux/actions/modal.ac"
-import { addNewWish, toggleStatusWish, deleteWish, reloadWish } from "../../../redux/actions/profile.ac"
+import { addNewWish, toggleStatusWish, reloadWish } from "../../../redux/actions/profile.ac"
 import { MainButton } from "../../Buttons/MainButton"
 import { RefuseButton } from "../../Buttons/RefuseButton"
 import { SimpleButton } from "../../Buttons/SimpleButton"
@@ -20,7 +20,6 @@ export const AddWish = ({editWish}) => {
       data.append('id', editWish.id);
       dispatch(reloadWish(data));
     } else {
-      console.log(e)
       dispatch(addNewWish(new FormData(e.target)));
     }
   };

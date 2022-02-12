@@ -20,7 +20,6 @@ export const resetPassword = (payload, redirect) => async dispatch => {
   const {status} = await customAxios.post(initPoints.resetPassword, payload)
   if(status === 200) {
     dispatch({type:RESET_PASSWORD})
-    console.log(status)
     redirect()
   }
 }

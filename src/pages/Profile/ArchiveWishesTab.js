@@ -1,6 +1,4 @@
-import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { PlusButton } from '../../components/Buttons/PlusButton';
 import { HrText } from '../../components/Dividers/HrText';
 import { Loader } from '../../components/Loader/Loader';
 import { Wish } from '../../components/Wish/Wish';

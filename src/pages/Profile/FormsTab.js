@@ -1,13 +1,9 @@
-import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { PlusButton } from '../../components/Buttons/PlusButton';
 import { SimpleButton } from '../../components/Buttons/SimpleButton';
 import { HrText } from '../../components/Dividers/HrText';
 import { FormCard } from '../../components/FormCard/FormCard';
 import { Loader } from '../../components/Loader/Loader';
-import { Wish } from '../../components/Wish/Wish';
-import { getCostByRange } from '../../custom/getCostByRange';
 import { setModal } from '../../redux/actions/modal.ac';
 import styles from './Profile.module.scss';
 

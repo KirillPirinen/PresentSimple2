@@ -12,7 +12,6 @@ export function setForm(value) {
 export const makeNewForm = (payload, navigate) => async (dispatch) => {
   const {status, data} = await customAxios.post(initPoints.createForm, payload)
   if(status === 200) {
-    console.log(data)
     dispatch(setForm(data))
     navigate('/successCreated')
   }

@@ -1,4 +1,5 @@
 import { Children, useEffect, useState } from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import TabLink from './TabLink'
 import styles from './Tabs.module.scss'
 
@@ -8,10 +9,10 @@ export const TabsWrapper = ({children, links}) => {
     return +window.localStorage.getItem('tab') || 0
   }
 
+  let i = -1;
+
   const [tab, setTabs] = useState(getInitTab())
 
-  let i = -1;
-  
   useEffect(()=> {
     window.localStorage.setItem('tab', tab)
   }, [tab])
@@ -26,12 +27,18 @@ export const TabsWrapper = ({children, links}) => {
         icon={el.icon} 
         active={index === tab}
       /> ))}
-
+    
     </div>
-        {Children.map(children, el => {
-          i++;
-          return tab === i && el
-        })}
+    <TransitionGroup>
+      <CSSTransition key={tab} classNames="fade" timeout={400}>
+          <div>
+            {Children.map(children, el => {
+              i++;
+              return tab === i && el
+            })}
+          </div>
+      </CSSTransition>
+    </TransitionGroup>
     </>
   )
 }

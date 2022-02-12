@@ -8,7 +8,6 @@ export const errorMessageMiddleware = ({dispatch}) => next => action => {
     dispatch(getInfo(action.payload.info))
     return null
   } else {
-    console.log(action)
     return next(action);
   }  
 }
