@@ -18,8 +18,8 @@ export const FormGenerated = () => {
     dispatch(deliverForm(form.id, navigate))
   }
 
-  const copyHandler = () => {
-    navigator.clipboard.writeText(linkAddress)
+  const copyHandler = async () => {
+    await navigator.clipboard.writeText(linkAddress)
     dispatch(setInformer({info:'Ссылка скопирована'}))
   }
   
