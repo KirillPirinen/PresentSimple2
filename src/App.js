@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { RequireAuth } from "./components/RequireAuth/RequireAuth";
 import { Auth } from "./pages/Auth/Auth";
@@ -21,18 +21,22 @@ import { Modal } from "./components/Modal/Modal";
 import { Profile } from "./pages/Profile/Profile";
 import { GroupPage } from "./pages/GroupPage/GroupPage";
 import { CheckLink } from "./pages/ResetPassword/CheckLink";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 function App() {
   const user = useSelector(state=>state.user)
+  const location = useLocation()
 
   useEffect(()=> {
     window.localStorage.setItem('user', JSON.stringify(user))
   }, [user])
 
   return (
-    <BrowserRouter>
+    <>
       <Header user={user}/>
-      <Routes>
+      <TransitionGroup>
+        <CSSTransition key={location.key} classNames="fade" unmountOnExit timeout={300}>
+        <Routes>
         <Route path="/" element={<Wrapper />}>
 
           <Route index element={<Main />} />
@@ -65,10 +69,12 @@ function App() {
           </Route>
 
         </Route>
-      </Routes>
+        </Routes>
+        </CSSTransition>
+      </TransitionGroup>
       <Informer/>
       <Modal/>
-    </BrowserRouter>
+    </>
   )
 }
 
