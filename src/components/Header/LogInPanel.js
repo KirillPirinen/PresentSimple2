@@ -31,7 +31,7 @@ export const LogInPanel = ({user}) => {
           </>
         )
       }
-        
+       <ImitationLink to="https://jswebpro.com/" text="Об авторе" target="_blank"/> 
     </div>
   )
 }
