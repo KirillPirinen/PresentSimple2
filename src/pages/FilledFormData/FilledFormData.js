@@ -11,6 +11,7 @@ import styles from './FilledFormData.module.scss'
 
 const FilledFormRange = ({range}) => {
   const dispatch = useDispatch()
+  const openModal = (wish, cost) => () => dispatch(setModal({present:wish, cost}))
   return (
     <>
             <h3>От {range.from} до {range.to ? range.to : '...'} руб.</h3>
@@ -27,7 +28,7 @@ const FilledFormRange = ({range}) => {
                     key={wish.id} 
                     wish={wish} 
                     cost={cost} 
-                    onClick={() => dispatch(setModal({present:wish, cost}))}
+                    onClick={wish.isBinded ? null : openModal(wish, cost)}
                     />
                     )
                 }
